@@ -6,10 +6,12 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgresSecret
+      - POSTGRES_DB=videoDatabase
     ports:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+      - ./my_postgres_data:/var/lib/postgresql/data 
 volumes:
   db:
     driver: local
