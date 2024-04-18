@@ -16,6 +16,6 @@ services:
       - my-bridge-network
 
 networks:
-  my-bridge-network:
+  video-library:
     driver: bridge
     
