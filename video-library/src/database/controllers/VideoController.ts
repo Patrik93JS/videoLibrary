@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Video } from "../entity/Video";
 
-class VideoController {
+export class VideoController {
 	async createVideo(
 		req: Request,
 		res: Response
@@ -153,5 +153,3 @@ class VideoController {
 		}
 	}
 }
-
-export default VideoController;

@@ -32,6 +32,6 @@ export class Video {
 	@Column()
 	createdAt: string;
 
-	@ManyToOne(() => User)
-	user: User;
+	// @ManyToOne(() => User)
+	// user: User;
 }

@@ -3,12 +3,10 @@ import {
 	PrimaryGeneratedColumn,
 	Column,
 } from "typeorm";
+import { CommonEntity } from "@/database/utils/CommonEntity";
 
 @Entity()
-export class User {
-	@PrimaryGeneratedColumn()
-	id: string;
-
+export class User extends CommonEntity {
 	@Column()
 	userName: string;
 
@@ -18,12 +16,6 @@ export class User {
 	@Column()
 	password: string;
 
-	@Column()
+	@Column({ nullable: true })
 	ownVideo: string;
-
-	@Column()
-	updatedAt: string;
-
-	@Column()
-	createdAt: string;
 }

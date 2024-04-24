@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Group } from "../entity/Group";
+import { Group } from "@/database/entity/Group";
 
 class GroupController {
 	async createGroup(
