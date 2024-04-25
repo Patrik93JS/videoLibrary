@@ -1,6 +1,6 @@
 'use server';
 
-import { UpdateUserAction } from '@/actions/UpdateUserAction';
+import { UpdateUserAction } from '@/actions/user/UpdateUserAction';
 import { UserController, withDatabase } from '@/database';
 
 export const UpdateUserForm = async () => {

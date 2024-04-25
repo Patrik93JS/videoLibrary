@@ -1,6 +1,6 @@
 'use server';
 import React from 'react';
-import { DeleteUserAction } from '@/actions/DeleteUserAction';
+import { DeleteUserAction } from '@/actions/user/DeleteUserAction';
 import { UserController, withDatabase } from '@/database';
 
 export const UserCard = async () => {
