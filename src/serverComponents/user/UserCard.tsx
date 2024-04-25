@@ -1,7 +1,7 @@
 'use server';
+import React from 'react';
 import { UserController, withDatabase } from '@/database';
 import { DeleteUserAction } from '@/serverComponents/user/delete/DeleteUserAction';
-import React from 'react';
 
 export const UserCard = async () => {
 	const db = await withDatabase();

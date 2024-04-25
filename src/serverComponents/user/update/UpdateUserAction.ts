@@ -1,7 +1,7 @@
 'use server';
 
-import { UserController, withDatabase } from '@/database';
 import { revalidatePath } from 'next/cache';
+import { UserController, withDatabase } from '@/database';
 
 export const UpdateUserAction = async (data: FormData) => {
 	const userId = data.get('userId');

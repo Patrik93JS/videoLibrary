@@ -1,7 +1,7 @@
 'use server';
 
-import { UserController, withDatabase } from '@/database';
 import { revalidatePath } from 'next/cache';
+import { UserController, withDatabase } from '@/database';
 
 export const DeleteUserAction = async (data: FormData) => {
 	const db = await withDatabase();
@@ -10,6 +10,7 @@ export const DeleteUserAction = async (data: FormData) => {
 	if (!userId) {
 		return;
 	}
-	const result = await new UserController(db).delete(userId.toString());
+
+	await new UserController(db).delete(userId.toString());
 	revalidatePath('./');
 };

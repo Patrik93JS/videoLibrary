@@ -20,4 +20,3 @@ export const DeleteUserButton: FC<Props> = ({ userId, onDelete }) => {
 		</button>
 	);
 };
-import React from 'react';

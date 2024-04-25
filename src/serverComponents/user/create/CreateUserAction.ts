@@ -1,7 +1,7 @@
 'use server';
 
-import { UserController, withDatabase } from '@/database';
 import { revalidatePath } from 'next/cache';
+import { UserController, withDatabase } from '@/database';
 
 export const CreateUserAction = async (data: FormData) => {
 	const email = data.get('email');
@@ -10,7 +10,7 @@ export const CreateUserAction = async (data: FormData) => {
 
 	const db = await withDatabase();
 
-	const result = await new UserController(db).create({
+	await new UserController(db).create({
 		email: String(email),
 		password: String(password),
 		name: String(userName),

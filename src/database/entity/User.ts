@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
 import { Role } from './Role';
 
