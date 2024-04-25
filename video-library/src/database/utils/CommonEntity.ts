@@ -1,6 +1,8 @@
 import {
 	CreateDateColumn,
 	PrimaryGeneratedColumn,
+	UpdateDateColumn,
+	DeleteDateColumn,
 } from "typeorm";
 
 export abstract class CommonEntity {
@@ -10,9 +12,9 @@ export abstract class CommonEntity {
 	@CreateDateColumn({ type: "timestamptz" })
 	createdAt: Date;
 
-	@CreateDateColumn({ type: "timestamptz" })
+	@UpdateDateColumn({ type: "timestamptz" })
 	updatedAt: Date;
 
-	@CreateDateColumn({ type: "timestamptz" })
+	@DeleteDateColumn({ type: "timestamptz" })
 	deletedAt: Date;
 }

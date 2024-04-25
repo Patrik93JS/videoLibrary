@@ -6,6 +6,7 @@ import {
 	Repository,
 } from "typeorm";
 import { CommonEntity } from "@/database/utils/CommonEntity";
+import { PAGINATION_LIMIT } from "@/util/constants";
 
 export abstract class BaseController<
 	Entity extends CommonEntity
@@ -36,31 +37,29 @@ export abstract class BaseController<
 	}
 
 	async update(
-		...props: Parameters<
+		id: Entity["id"],
+		props: Parameters<
 			(typeof this.repository)["update"]
-		>
+		>[1]
 	) {
-		return this.repository.update(...props);
+		// @ts-expect-error id has to exists because we are extending CommonEntity
+		return this.repository.update({ id }, props);
 	}
 
-	async delete(
-		...props: Parameters<
-			(typeof this.repository)["delete"]
-		>
+	async delete(id: Entity["id"]) {
+		// @ts-expect-error id has to exists because we are extending CommonEntity
+		return this.repository.delete({ id });
+	}
+
+	async list(
+		page: number,
+		limit = PAGINATION_LIMIT
 	) {
-		return this.repository.delete(...props);
-	}
+		const skip = (page - 1) * limit;
 
-	// FIXME: implement me
-	async list() {
-		return this.repository.find();
+		return this.repository.find({
+			skip,
+			take: limit,
+		});
 	}
-
-	/**
-	 * (page:number, limit:number)
-	 *
-	 * this.repository.find({take: 10, skip:0})
-	 *
-	 *
-	 */
 }

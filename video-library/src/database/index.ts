@@ -1,10 +1,5 @@
 import "reflect-metadata";
-import {
-	Connection,
-	createConnection,
-	DataSource,
-	getConnectionManager,
-} from "typeorm";
+import { DataSource } from "typeorm";
 import * as entities from "./entity";
 
 export * from "./entity";
@@ -18,7 +13,7 @@ export const database = new DataSource({
 	password: "postgresSecret",
 	database: "video-database",
 	synchronize: true,
-	logging: false,
+	logging: ["info", "warn", "error", "schema"],
 	entities,
 	migrations: [],
 	subscribers: [],

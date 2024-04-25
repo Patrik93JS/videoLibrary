@@ -1,21 +1,22 @@
 import {
 	Entity,
-	PrimaryGeneratedColumn,
 	Column,
+	ManyToOne,
 } from "typeorm";
 import { CommonEntity } from "@/database/utils/CommonEntity";
+import { Role } from "@/database";
 
 @Entity()
 export class User extends CommonEntity {
-	@Column()
-	userName: string;
+	@Column({ type: "varchar", unique: true })
+	name: string;
 
-	@Column()
+	@Column({ type: "varchar", unique: true })
 	email: string;
 
-	@Column()
+	@Column({ type: "varchar", nullable: false })
 	password: string;
 
-	@Column({ nullable: true })
-	ownVideo: string;
+	@ManyToOne(() => Role, (role) => role.users)
+	role: Role;
 }
