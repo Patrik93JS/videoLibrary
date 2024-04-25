@@ -1,5 +1,5 @@
 'use server';
-import { CreateUserAction } from '@/serverComponents/user/create/CreateUserAction';
+import { CreateUserAction } from '@/actions/CreateUserAction';
 
 export const CreateUserForm = () => {
 	return (
