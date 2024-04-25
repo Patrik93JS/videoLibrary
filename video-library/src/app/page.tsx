@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { CreateUserForm } from "@/serverComponents/user/create/CreateUserForm";
-import { UpdateUserForm } from "@/serverComponents/user/update/UpdateUserForm";
-import { UserCard } from "@/serverComponents/user/UserCard";
+import { CreateUserForm } from '@/serverComponents/user/create/CreateUserForm';
+import { UpdateUserForm } from '@/serverComponents/user/update/UpdateUserForm';
+import { UserCard } from '@/serverComponents/user/UserCard';
 
 export default async function Home() {
 	return (

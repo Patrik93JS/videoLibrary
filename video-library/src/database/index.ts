@@ -1,19 +1,19 @@
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import * as entities from "./entity";
+import 'reflect-metadata';
+import { DataSource } from 'typeorm';
+import * as entities from './entity';
 
-export * from "./entity";
-export * from "./controllers";
+export * from './entity';
+export * from './controllers';
 
 export const database = new DataSource({
-	type: "postgres",
-	host: "localhost",
+	type: 'postgres',
+	host: 'localhost',
 	port: 5432,
-	username: "postgres",
-	password: "postgresSecret",
-	database: "video-database",
+	username: 'postgres',
+	password: 'postgresSecret',
+	database: 'video-database',
 	synchronize: true,
-	logging: ["info", "warn", "error", "schema"],
+	logging: ['info', 'warn', 'error'],
 	entities,
 	migrations: [],
 	subscribers: [],

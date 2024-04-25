@@ -1,16 +1,11 @@
-"use server";
+'use server';
 
-import {
-	UserController,
-	withDatabase,
-} from "@/database";
-import { revalidatePath } from "next/cache";
+import { UserController, withDatabase } from '@/database';
+import { revalidatePath } from 'next/cache';
 
-export const UpdateUserAction = async (
-	data: FormData
-) => {
-	const userId = data.get("userId");
-	const userName = data.get("userName");
+export const UpdateUserAction = async (data: FormData) => {
+	const userId = data.get('userId');
+	const userName = data.get('userName');
 
 	const db = await withDatabase();
 
@@ -24,5 +19,5 @@ export const UpdateUserAction = async (
 		name: userName.toString(),
 	});
 
-	revalidatePath("./");
+	revalidatePath('./');
 };

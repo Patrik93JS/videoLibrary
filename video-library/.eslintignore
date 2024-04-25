@@ -1,0 +1,4 @@
+node_modules
+.next
+.s3
+.my_postgres_data
