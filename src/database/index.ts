@@ -1,9 +1,10 @@
+// eslint-disable-next-line simple-import-sort/imports
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
 import * as entities from './entity';
+import { DataSource } from 'typeorm';
 
-export * from './entity';
 export * from './controllers';
+export * from './entity';
 
 export const database = new DataSource({
 	type: 'postgres',
