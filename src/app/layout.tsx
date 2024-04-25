@@ -1,3 +1,6 @@
+// eslint-disable-next-line simple-import-sort/imports
+import 'reflect-metadata/lite';
+
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';

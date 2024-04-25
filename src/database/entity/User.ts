@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
+import { Role } from '@/database/entity';
 import { CommonEntity } from '@/database/utils/CommonEntity';
-import { Role } from './Role';
 
 @Entity()
 export class User extends CommonEntity {
