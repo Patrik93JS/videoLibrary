@@ -6,7 +6,7 @@ import { CommonEntity } from '@/database/utils/CommonEntity';
 export class Role extends CommonEntity {
 	@Column({
 		type: 'varchar',
-		length: 255,
+		length: 30,
 		nullable: false,
 		unique: true,
 	})
