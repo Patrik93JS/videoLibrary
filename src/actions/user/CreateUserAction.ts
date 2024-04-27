@@ -1,7 +1,8 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { UserController, withDatabase } from '@/database';
+import { withDatabase } from '@/database';
+import { UserController } from '@/database/controllers';
 
 export const CreateUserAction = async (data: FormData) => {
 	const email = data.get('email');

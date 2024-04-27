@@ -1,6 +1,6 @@
-import { Column, Entity, OneToOne } from 'typeorm';
-import { Video } from '@/database/entity';
+import { Column, Entity, OneToOne, type Relation } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
+import { Video } from './Video';
 
 @Entity()
 export class File extends CommonEntity {
@@ -14,5 +14,5 @@ export class File extends CommonEntity {
 	minetype: string;
 
 	@OneToOne(() => Video, (video) => video.id)
-	video: Video;
+	video: Relation<Video>;
 }

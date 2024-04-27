@@ -1,8 +1,11 @@
+// eslint-disable-next-line simple-import-sort/imports
+import 'reflect-metadata/lite';
 import { DataSource } from 'typeorm';
-import * as entities from './entity';
-
-export * from './controllers';
-export * from './entity';
+import { Category } from './entity/Category';
+import { User } from './entity/User';
+import { Role } from './entity/Role';
+import { Video } from './entity/Video';
+import { File } from './entity/File';
 
 export const database = new DataSource({
 	type: 'postgres',
@@ -12,8 +15,8 @@ export const database = new DataSource({
 	password: 'postgresSecret',
 	database: 'video-database',
 	synchronize: true,
-	logging: ['info', 'warn', 'error'],
-	entities,
+	logging: true,
+	entities: [Category, File, User, Role, Video],
 	migrations: [],
 	subscribers: [],
 });

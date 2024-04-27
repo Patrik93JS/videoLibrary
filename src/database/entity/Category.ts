@@ -1,6 +1,6 @@
-import { Column, Entity, OneToMany } from 'typeorm';
-import { Video } from '@/database/entity';
+import { Column, Entity, OneToMany, type Relation } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
+import { Video } from './Video';
 
 @Entity()
 export class Category extends CommonEntity {
@@ -8,5 +8,5 @@ export class Category extends CommonEntity {
 	name: string;
 
 	@OneToMany(() => Video, (video) => video.category)
-	video: Video;
+	video: Relation<Video>;
 }

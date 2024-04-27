@@ -1,7 +1,8 @@
-import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
-import { Category, User } from '@/database/entity';
-import { File } from '@/database/entity/File';
+import { Column, Entity, ManyToOne, OneToOne, type Relation } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
+import { Category } from './Category';
+import { File } from './File';
+import { User } from './User';
 
 @Entity()
 export class Video extends CommonEntity {
@@ -15,8 +16,8 @@ export class Video extends CommonEntity {
 	user: User;
 
 	@ManyToOne(() => Category, (category) => category.id)
-	category: Category;
+	category: Relation<Category>;
 
 	@OneToOne(() => File, (file) => file.video)
-	file: File;
+	file: Relation<File>;
 }

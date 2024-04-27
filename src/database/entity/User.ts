@@ -1,6 +1,6 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
-import { Role } from '@/database/entity';
+import { Column, Entity, ManyToOne, type Relation } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
+import { Role } from './Role';
 
 @Entity()
 export class User extends CommonEntity {
@@ -14,5 +14,5 @@ export class User extends CommonEntity {
 	password: string;
 
 	@ManyToOne(() => Role, (role) => role.users)
-	role: Role;
+	role: Relation<Role>;
 }
