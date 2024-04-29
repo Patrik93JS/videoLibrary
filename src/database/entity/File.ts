@@ -4,13 +4,13 @@ import { Video } from './Video';
 
 @Entity()
 export class File extends CommonEntity {
-	@Column({ type: 'varchar', unique: true, length: 30 })
+	@Column({ type: 'varchar' })
 	name: string;
 
-	@Column({ type: 'varchar', unique: true, length: 255 })
+	@Column({ type: 'varchar' })
 	description: string;
 
-	@Column({ type: 'varchar', length: 255 })
+	@Column({ type: 'varchar' })
 	minetype: string;
 
 	@OneToOne(() => Video, (video) => video.id)

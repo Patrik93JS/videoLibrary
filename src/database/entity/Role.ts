@@ -1,16 +1,15 @@
 import { Column, Entity, OneToMany, type Relation } from 'typeorm';
 import { CommonEntity } from '@/database/utils/CommonEntity';
+import { roles, UserRole } from '@/util/constants';
 import { User } from './User';
 
 @Entity()
 export class Role extends CommonEntity {
 	@Column({
-		type: 'varchar',
-		length: 30,
-		nullable: false,
-		unique: true,
+		type: 'enum',
+		enum: roles,
 	})
-	name: string;
+	name: UserRole;
 
 	@OneToMany(() => User, (user) => user.role)
 	users: Relation<User>[];

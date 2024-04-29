@@ -4,7 +4,7 @@ import { Video } from './Video';
 
 @Entity()
 export class Category extends CommonEntity {
-	@Column({ type: 'varchar', unique: true, length: 50 })
+	@Column({ type: 'varchar', unique: true })
 	name: string;
 
 	@OneToMany(() => Video, (video) => video.category)

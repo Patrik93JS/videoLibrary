@@ -6,10 +6,10 @@ import { User } from './User';
 
 @Entity()
 export class Video extends CommonEntity {
-	@Column({ type: 'varchar', unique: true, length: 30 })
+	@Column({ type: 'varchar' })
 	name: string;
 
-	@Column({ type: 'varchar', unique: true, length: 255 })
+	@Column({ type: 'varchar' })
 	description: string;
 
 	@ManyToOne(() => User, (user) => user.id)
