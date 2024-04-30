@@ -1,7 +1,6 @@
 import { GetObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-
-const bucket = 'video-app-files';
+import { bucket } from '@/database';
 
 export class S3Manager {
 	private s3: S3Client;

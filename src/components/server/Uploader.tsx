@@ -1,5 +1,6 @@
 'use server';
 import { FC } from 'react';
+import { UploadFileAction } from '@/actions/UploadFileAction';
 import { withDatabase } from '@/database';
 import { FileController } from '@/database/controllers';
 
@@ -12,7 +13,7 @@ export const Uploader: FC = async () => {
 
 	return (
 		<>
-			<form action={uploadFile}>
+			<form action={UploadFileAction}>
 				<input type="file" name="file" />
 				<button type="submit">Upload</button>
 			</form>
@@ -31,19 +32,4 @@ export const Uploader: FC = async () => {
 			</div>
 		</>
 	);
-};
-
-const uploadFile = async (data: FormData) => {
-	'use server';
-	const file = data.get('file') as File;
-
-	if (!file) {
-		throw new Error('No file uploaded');
-	}
-
-	if (!file.type.match(/image\/(jpeg|png|gif|webp|svg\+xml)|video\/(mp4|webm|ogg)/)) return;
-
-	const db = await withDatabase();
-
-	await new FileController(db).upload(file);
 };

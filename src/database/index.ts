@@ -27,3 +27,5 @@ export const withDatabase = async () => {
 	}
 	return database;
 };
+
+export const bucket = 'video-app-files';
