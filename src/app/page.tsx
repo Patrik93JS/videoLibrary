@@ -1,5 +1,6 @@
 'use server';
 
+import { Uploader } from '@/components/server/Uploader';
 import { CreateUserForm } from '@/components/server/user/CreateUserForm';
 import { UpdateUserForm } from '@/components/server/user/UpdateUserForm';
 import { UserCard } from '@/components/server/user/UserCard';
@@ -10,6 +11,7 @@ export default async function Home() {
 			<CreateUserForm />
 			<UserCard />
 			<UpdateUserForm />
+			<Uploader />
 		</main>
 	);
 }
