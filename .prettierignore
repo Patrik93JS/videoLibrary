@@ -1,0 +1,5 @@
+# Add files here to ignore them from prettier formatting
+node_modules
+.next
+.s3
+.my_postgres_data
