@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { UploadFileAction } from '..';
 import { useBodyRef } from '@/util/hooks/useBodyRef';
+import { UploadFileAction } from '@/actions/UploadFileAction';
 
 const schema = z.object({
 	video: z.string().refine(
