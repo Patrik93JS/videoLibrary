@@ -1,5 +1,4 @@
 'use server';
-import React from 'react';
 import { DeleteUserAction } from '@/actions/user/DeleteUserAction';
 import { withDatabase } from '@/database';
 import { UserController } from '@/database/controllers';
