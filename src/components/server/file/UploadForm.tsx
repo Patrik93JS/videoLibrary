@@ -1,9 +1,10 @@
+'use client';
 import { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { useBodyRef } from '@/util/hooks/useBodyRef';
 import { UploadFileAction } from '@/actions/UploadFileAction';
+import { useBodyRef } from '@/util/hooks/useBodyRef';
 
 const schema = z.object({
 	video: z.string().refine(
@@ -25,7 +26,7 @@ const schema = z.object({
 type UploadForm = z.infer<typeof schema>;
 
 export const UploadForm: FC = () => {
-	const { register, handleSubmit } = useForm<UploadForm>();
+	const { register } = useForm<UploadForm>();
 	const bodyRef = useBodyRef();
 
 	// const onSubmit = handleSubmit((data) => {});
@@ -34,7 +35,6 @@ export const UploadForm: FC = () => {
 		bodyRef &&
 		createPortal(
 			<form
-				onSubmit={onSubmit}
 				action={UploadFileAction}
 				className="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black rounded-xl bg-opacity-50 z-10"
 			>
@@ -42,9 +42,7 @@ export const UploadForm: FC = () => {
 				<input type="file" {...register('video', { required: true })} />
 				<p>insert image</p>
 				<input type="file" {...register('image', { required: true })} />
-				<button type="submit" onClick={closeModal}>
-					Upload
-				</button>
+				<button type="submit">Upload</button>
 			</form>,
 			bodyRef,
 		)
