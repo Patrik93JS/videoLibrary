@@ -9,7 +9,9 @@
 		"postdev": "docker-compose down --remove-orphans --volumes",
 		"lint": "next lint",
 		"start": "next start",
-		"prepare": "husky"
+		"prepare": "husky",
+		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+		"check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\""
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.565.0",
