@@ -2,8 +2,9 @@
 
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { uploadFileAction } from 'src/actions/UploadFileAction';
+import type { Category } from 'src/database/entity/Category';
 import { z } from 'zod';
-import { uploadFileAction } from '../../../actions/uploadFileAction';
 import { FileInput } from '../../server/file/FileInput';
 import { Button } from '../reusable/Button';
 import { CloseRedirectLink } from '../reusable/CloseRedirectLink';
@@ -31,7 +32,11 @@ const schema = z.object({
 
 export type UploadForm = z.infer<typeof schema>;
 
-export const UploadForm: FC = async () => {
+type Props = {
+	categories: Category[];
+};
+
+export const UploadForm: FC<Props> = async ({ categories }) => {
 	const methods = useForm<UploadForm>();
 
 	return (
@@ -47,7 +52,7 @@ export const UploadForm: FC = async () => {
 					<FileInput type="text" name="description" registerInput="description" />
 					<FileInput type="file" name="video" registerInput="video" />
 					<FileInput type="file" name="image" registerInput="image" />
-					<FileSelectCategory />
+					<FileSelectCategory categories={categories} />
 					<Button>Upload</Button>
 				</div>
 			</form>
