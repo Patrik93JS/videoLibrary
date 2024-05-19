@@ -1,5 +1,5 @@
 'use server';
-import { fetchCategoriesAction } from 'src/actions/fetchCategoriesAction';
+import { fetchCategoriesAction } from '../../actions/fetchCategoriesAction';
 import { UploadForm } from '../../components/client/file/UploadForm';
 
 export default async function UploadFile() {

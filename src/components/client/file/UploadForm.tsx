@@ -2,9 +2,9 @@
 
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { uploadFileAction } from 'src/actions/UploadFileAction';
 import type { Category } from 'src/database/entity/Category';
 import { z } from 'zod';
+import { uploadFileAction } from '../../../actions/uploadFileAction';
 import { FileInput } from '../../server/file/FileInput';
 import { Button } from '../reusable/Button';
 import { CloseRedirectLink } from '../reusable/CloseRedirectLink';
