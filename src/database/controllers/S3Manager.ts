@@ -1,6 +1,6 @@
 import { GetObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { bucket, S3Config } from '@/util/constants';
+import { bucket, S3Config } from '../../util/constants';
 
 export class S3Manager {
 	private s3: S3Client;
