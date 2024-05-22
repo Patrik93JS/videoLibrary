@@ -19,7 +19,7 @@ export const FileInput: FC<Props> = ({ name, type, registerInput }) => {
 			<input
 				type={type}
 				id={name}
-				{...register(`${registerInput}`, { required: true })}
+				{...register(`${registerInput}`)}
 				className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md"
 			/>
 			{errors.name && <p className="text-red-500 mt-2">{errors.name.message}</p>}

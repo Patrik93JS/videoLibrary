@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { withDatabase } from '../../../database';
 import { FileController } from '../../../database/controllers';
@@ -12,14 +13,13 @@ export const ListFiles = async () => {
 			{dataFiles
 				.filter((file) => file.minetype.match(/image\/(jpeg|png|gif|webp|svg\+xml)/))
 				.map((file) => {
+					if (!file.url) return;
 					return (
 						<div key={file.video.id} className="border border-gray-300 rounded-md overflow h-1/6 w-1/6">
-							<>
-								<p className="flex justify-center">{file.video.name}</p>
-								<Link href={`/${file.video.id}`} className="w-72 h-60">
-									<img src={file.url} alt={file.video.name} />
-								</Link>
-							</>
+							<p className="flex justify-center">{file.video.name}</p>
+							<Link href={`/${file.video.id}`} className="w-72 h-60">
+								<Image src={file.url} alt={file.video.name} />
+							</Link>
 						</div>
 					);
 				})}

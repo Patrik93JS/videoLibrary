@@ -27,7 +27,7 @@ const schema = z.object({
 	),
 	name: z.string().min(1, { message: 'Name is required.' }),
 	description: z.string().min(1, { message: 'Description is required.' }),
-	categoryId: z.string(),
+	categoryId: z.string().min(1, { message: 'Category is required.' }),
 });
 
 export type UploadForm = z.infer<typeof schema>;
