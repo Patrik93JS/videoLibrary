@@ -2,16 +2,12 @@
 
 import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { object, string } from 'zod';
 import { withDatabase } from '../database';
 import { CategoryController } from '../database/controllers';
+import { createCategorySchema } from '../util/schemas/createCategorySchema';
 
-const FormDataSchema = object({
-	name: string().min(3, { message: 'Must be # or more characters long' }),
-});
-
-export const createCategoryAction = async (data: FormData) => {
-	const validateData = FormDataSchema.safeParse({
+export const createCategoryAction = async (state: unknown, data: FormData) => {
+	const validateData = createCategorySchema.safeParse({
 		name: data.get('name'),
 	});
 	if (!validateData.success) return;

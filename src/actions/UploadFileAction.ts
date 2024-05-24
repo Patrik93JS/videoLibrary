@@ -1,25 +1,15 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { imageType, videoType } from 'src/util/constants';
-import { z } from 'zod';
+import { revalidateTag } from 'next/cache';
 import { withDatabase } from '../database';
 import { FileController, VideoController } from '../database/controllers';
-
-const formDataSchema = z.object({
-	video: videoType,
-	image: imageType,
-	name: z.string().min(1, 'Name is required'),
-	description: z.string().min(10, 'Description is required'),
-	categoryId: z.string().min(1, 'Category ID is required'),
-});
+import { uploadFileSchema } from '../util/schemas/uploadFileSchema';
 
 export const uploadFileAction = async (state: unknown, data: FormData) => {
 	try {
 		const formData = Object.fromEntries(data);
 
-		const parsed = formDataSchema.parse(formData);
+		const parsed = uploadFileSchema.parse(formData);
 
 		const { video, image, name, description, categoryId } = parsed;
 
@@ -31,15 +21,15 @@ export const uploadFileAction = async (state: unknown, data: FormData) => {
 
 		const videoFile = new VideoController(db);
 
-		videoFile.create({
+		const result = videoFile.create({
 			files: [uploadedImage, uploadedVideo],
 			category: { id: categoryId },
 			description: description,
 			name: name,
 		});
 
-		revalidatePath('./');
-		redirect('/');
+		revalidateTag('./');
+		return result;
 	} catch (error) {
 		console.error('Validation error:', error);
 	}

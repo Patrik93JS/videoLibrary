@@ -1,10 +1,12 @@
 import { SignUp } from '@clerk/nextjs';
+import { NextPage } from 'next';
+import { AuthWrapper } from '../../../components/ui/auth/AuthWrapper';
 
-const SignInPage = () => {
+const SignInPage: NextPage = () => {
 	return (
-		<div className="flex h-screen justify-center items-center align-middle">
+		<AuthWrapper>
 			<SignUp path="/sign-up" />
-		</div>
+		</AuthWrapper>
 	);
 };
 
