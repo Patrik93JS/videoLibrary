@@ -16,9 +16,9 @@ export const FileSelectCategory: FC<Props> = ({ categories }) => {
 
 	return (
 		<div className="mb-4">
-			<CustomSelect options={categories} name="categoryid" />
+			<CustomSelect options={categories} name="categoryId" />
 
-			{errors.name && <p className="text-red-500 mt-2">{errors.name.message}</p>}
+			{errors.categoryId && <p className="text-red-500 mt-2">{errors.categoryId.message}</p>}
 		</div>
 	);
 };

@@ -1,36 +1,27 @@
 'use server';
 
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { imageType, videoType } from 'src/util/constants';
 import { z } from 'zod';
 import { withDatabase } from '../database';
 import { FileController, VideoController } from '../database/controllers';
 
 const formDataSchema = z.object({
-	video: z.instanceof(File).refine((file) => file.type.match(/video\/(mp4|webm|ogg)/), {
-		message: 'Invalid video format',
-	}),
-	image: z.instanceof(File).refine((file) => file.type.match(/image\/(jpeg|png|gif|webp|svg\+xml)/), {
-		message: 'Invalid image format',
-	}),
+	video: videoType,
+	image: imageType,
 	name: z.string().min(1, 'Name is required'),
 	description: z.string().min(10, 'Description is required'),
 	categoryId: z.string().min(1, 'Category ID is required'),
 });
 
-export const uploadFileAction = async (data: FormData) => {
+export const uploadFileAction = async (state: unknown, data: FormData) => {
 	try {
-		const formData = {
-			video: data.get('video') as File,
-			image: data.get('image') as File,
-			name: data.get('name')?.toString(),
-			description: data.get('description')?.toString(),
-			categoryId: data.get('categoryId')?.toString(),
-		};
+		const formData = Object.fromEntries(data);
 
-		formDataSchema.parse(formData);
+		const parsed = formDataSchema.parse(formData);
 
-		const { video, image, name, description, categoryId } = formData;
+		const { video, image, name, description, categoryId } = parsed;
 
 		const db = await withDatabase();
 
@@ -47,7 +38,7 @@ export const uploadFileAction = async (data: FormData) => {
 			name: name,
 		});
 
-		revalidateTag('./');
+		revalidatePath('./');
 		redirect('/');
 	} catch (error) {
 		console.error('Validation error:', error);
