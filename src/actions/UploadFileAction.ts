@@ -13,9 +13,9 @@ const formDataSchema = z.object({
 	image: z.instanceof(File).refine((file) => file.type.match(/image\/(jpeg|png|gif|webp|svg\+xml)/), {
 		message: 'Invalid image format',
 	}),
-	name: z.string().nonempty('Name is required'),
-	description: z.string().nonempty('Description is required'),
-	categoryId: z.string().nonempty('Category ID is required'),
+	name: z.string().min(1, 'Name is required'),
+	description: z.string().min(10, 'Description is required'),
+	categoryId: z.string().min(1, 'Category ID is required'),
 });
 
 export const uploadFileAction = async (data: FormData) => {

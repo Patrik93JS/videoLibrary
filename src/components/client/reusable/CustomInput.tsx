@@ -1,6 +1,8 @@
+'use client';
+
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { UploadForm } from '../../client/file/UploadForm';
+import { UploadForm } from '../file/UploadForm';
 
 type Props = {
 	type: string;
@@ -8,7 +10,7 @@ type Props = {
 	registerInput: 'name' | 'description' | 'video' | 'image';
 };
 
-export const FileInput: FC<Props> = ({ name, type, registerInput }) => {
+export const CustomInput: FC<Props> = ({ name, type, registerInput }) => {
 	const {
 		register,
 		formState: { errors },

@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 export const PAGINATION_LIMIT = 10;
 
 export const roles = ['user', 'admin'] as const;
@@ -15,3 +17,6 @@ export const S3Config = {
 	},
 };
 export const categoryListLenght = 20;
+
+export const videoType = z.enum(['video/mp4', 'video/webm', 'video/ogg']);
+export const imageType = z.enum(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']);

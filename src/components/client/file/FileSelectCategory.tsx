@@ -16,17 +16,6 @@ export const FileSelectCategory: FC<Props> = ({ categories }) => {
 
 	return (
 		<div className="mb-4">
-			{/* <select
-				id="categoryId"
-				className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md"
-				{...register('categoryId')}
-			>
-				{categories.map((category) => (
-					<option key={category.id} value={category.id}>
-						{category.name}
-					</option>
-				))}
-			</select> */}
 			<CustomSelect options={categories} name="categoryid" />
 
 			{errors.name && <p className="text-red-500 mt-2">{errors.name.message}</p>}

@@ -9,11 +9,9 @@ export const ListCategory = async () => {
 	return (
 		<div className="flex flex-wrap justify-center gap-4 my-10 mx-5">
 			{data.map((category) => (
-				<>
-					<div key={category.id} className=" bg-white shadow-md rounded-lg p-4 flex items-center">
-						<div className="text-lg font-semibold">{category.name}</div>
-					</div>
-				</>
+				<div key={category.id} className=" bg-white shadow-md rounded-lg p-4 flex items-center">
+					<div className="text-lg font-semibold">{category.name}</div>
+				</div>
 			))}
 		</div>
 	);
