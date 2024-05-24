@@ -2,6 +2,7 @@
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import type { Category } from 'src/database/entity/Category';
+import { CustomSelect } from '../reusable/CustomSelect';
 import { UploadForm } from './UploadForm';
 
 type Props = {
@@ -10,13 +11,12 @@ type Props = {
 
 export const FileSelectCategory: FC<Props> = ({ categories }) => {
 	const {
-		register,
 		formState: { errors },
 	} = useFormContext<UploadForm>();
 
 	return (
 		<div className="mb-4">
-			<select
+			{/* <select
 				id="categoryId"
 				className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md"
 				{...register('categoryId')}
@@ -26,7 +26,8 @@ export const FileSelectCategory: FC<Props> = ({ categories }) => {
 						{category.name}
 					</option>
 				))}
-			</select>
+			</select> */}
+			<CustomSelect options={categories} name="categoryid" />
 
 			{errors.name && <p className="text-red-500 mt-2">{errors.name.message}</p>}
 		</div>

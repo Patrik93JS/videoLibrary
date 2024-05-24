@@ -2,7 +2,7 @@
 import { fetchCategoriesAction } from '../../actions/fetchCategoriesAction';
 import { UploadForm } from '../../components/client/file/UploadForm';
 
-export default async function UploadFile() {
+const UploadFile = async () => {
 	const categories = await fetchCategoriesAction();
 
 	return (
@@ -10,4 +10,6 @@ export default async function UploadFile() {
 			<UploadForm categories={categories} />
 		</main>
 	);
-}
+};
+
+export default UploadFile;

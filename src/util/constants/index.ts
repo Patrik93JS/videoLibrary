@@ -14,3 +14,4 @@ export const S3Config = {
 		secretAccessKey: 'rootroot',
 	},
 };
+export const categoryListLenght = 20;

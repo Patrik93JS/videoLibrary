@@ -1,20 +1,20 @@
 'use server';
 
-import Link from 'next/link';
 import { ListCategory } from '../components/server/category/ListCategory';
 import { ListFiles } from '../components/server/file/ListFiles';
+import { StyledLink } from '../components/server/reusable/StyledLink';
 
-export default async function Home() {
+const Home = () => {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
 			<ListCategory />
-			<Link href="/uploadFile" className="inline-block bg-black text-white py-2 px-4 rounded-lg">
-				Upload file
-			</Link>
-			<Link href="/createCategory" className="mt-10 inline-block bg-black text-white py-2 px-4 rounded-lg">
+			<StyledLink href="/uploadFile">Upload file</StyledLink>
+			<StyledLink href="/createCategory" variant="secondary">
 				Create category
-			</Link>
+			</StyledLink>
 			<ListFiles />
 		</main>
 	);
-}
+};
+
+export default Home;

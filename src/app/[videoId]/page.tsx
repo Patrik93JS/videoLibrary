@@ -1,14 +1,11 @@
-import { withDatabase } from '../../database';
-import { VideoController } from '../../database/controllers';
-import { S3Manager } from '../../database/controllers/S3Manager';
+'use server';
+import { fetchVideoId } from '../../util/helpers/fetchVideoId';
 
-export default async function Video({ params }: { params: { videoId: string } }) {
-	const db = await withDatabase();
-	const s3 = new S3Manager();
-	const videoController = new VideoController(db);
-
-	const data = await videoController.findById(params.videoId, { relations: ['files'] });
+const Video = async ({ params }: { params: { videoId: string } }) => {
+	const videoId = params.videoId;
+	const { s3, data } = await fetchVideoId({ videoId });
 	const video = data?.files.find((file) => file.minetype.match(/video\/(mp4|webm|ogg)/));
+
 	if (!video) return;
 	const videoUrl = await s3.getFilePresignedUrl(video.id);
 	const videoDescription = data?.description;
@@ -21,4 +18,5 @@ export default async function Video({ params }: { params: { videoId: string } })
 			</div>
 		</>
 	);
-}
+};
+export default Video;
