@@ -5,11 +5,11 @@ import { FC, PropsWithChildren } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const linkStyles = tv({
-	base: 'font-medium py-2 px-4 rounded-lg',
 	variants: {
 		variant: {
-			primary: 'bg-black text-white',
-			secondary: 'mt-10 bg-red text-white border',
+			primary: 'bg-black text-white py-2 px-4 rounded-lg',
+			secondary: 'mt-10 bg-black text-white border py-2 px-4 rounded-lg',
+			image: 'bg-red max-w-10 max-h-10',
 		},
 	},
 	defaultVariants: {

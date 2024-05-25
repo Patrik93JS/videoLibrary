@@ -15,10 +15,12 @@ export const ListFiles = async () => {
 				.map((file) => {
 					if (!file.url) return;
 					return (
-						<div key={file.video?.id} className="border border-gray-300 rounded-md overflow h-1/6 w-1/6">
+						<div key={file.video?.id} className="border border-black rounded-md overflow ">
 							<p className="flex justify-center">{file.video?.name}</p>
-							<Link href={`/${file.video?.id}`} className="w-72 h-60">
-								<Image src={file.url} alt={file.video?.name} width={500} height={500} />
+							<Link href={`/${file.video?.id}`} variant="image">
+								<div className="relative block h-[100px] w-[100px]">
+									<Image src={file.url} alt={file.video?.name} width={100} height={0} />
+								</div>
 							</Link>
 						</div>
 					);

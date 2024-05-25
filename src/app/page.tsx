@@ -6,7 +6,7 @@ import { Link } from '../components/ui/reusable/Link';
 
 const Home = () => {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
+		<main className="flex  flex-col items-center justify-between p-24">
 			<ListCategory />
 			<Link href="/uploadFile">Upload file</Link>
 			<Link href="/createCategory" variant="secondary">
