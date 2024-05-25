@@ -18,7 +18,10 @@ export const S3Config = {
 };
 export const categoryListLenght = 20;
 
-export const fileMatcherSchema = (fileTypeRegexp: RegExp) => z.custom<File>((file) => (file.type.match(fileTypeRegexp) ? file : false));
+export const fileMatcherSchema = (fileTypeRegexp: RegExp) =>
+	z
+		.any()
+		.refine((file): file is File => (file && file.length > 0 && fileTypeRegexp.test(file[0].type)) || file.type.match(fileTypeRegexp));
 
 export const videoType = fileMatcherSchema(/video\/(mp4|webm|ogg)/);
 export const imageType = fileMatcherSchema(/image\/(jpeg|png|gif|webp|svg\+xml)/);
