@@ -18,5 +18,7 @@ export const S3Config = {
 };
 export const categoryListLenght = 20;
 
-export const videoType = z.enum(['video/mp4', 'video/webm', 'video/ogg']);
-export const imageType = z.enum(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']);
+export const fileMatcherSchema = (fileTypeRegexp: RegExp) => z.custom<File>((file) => (file.type.match(fileTypeRegexp) ? file : false));
+
+export const videoType = fileMatcherSchema(/video\/(mp4|webm|ogg)/);
+export const imageType = fileMatcherSchema(/image\/(jpeg|png|gif|webp|svg\+xml)/);
