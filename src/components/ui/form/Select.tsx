@@ -9,7 +9,7 @@ type Props = {
 	options: { value: string; label: ReactNode }[];
 };
 
-export const CustomSelect: FC<Props> = ({ name, title, options }) => {
+export const Select: FC<Props> = ({ name, title, options }) => {
 	const {
 		register,
 		formState: { errors },

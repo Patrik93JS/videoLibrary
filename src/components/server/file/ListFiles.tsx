@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { withDatabase } from '../../../database';
 import { FileController } from '../../../database/controllers';
+import { Link } from '../../ui/reusable/Link';
 
 export const ListFiles = async () => {
 	const db = await withDatabase();

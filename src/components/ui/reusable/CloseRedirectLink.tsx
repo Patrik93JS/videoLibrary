@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { FC } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
+import { Link } from './Link';
 
 export const CloseRedirectLink: FC = () => {
 	return (

@@ -8,7 +8,7 @@ type Props = {
 	title: ReactNode;
 } & Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'className' | 'name' | 'id' | 'children'>;
 
-export const CustomInput: FC<Props> = ({ name, title, ...props }) => {
+export const Input: FC<Props> = ({ name, title, ...props }) => {
 	const {
 		register,
 		formState: { errors },

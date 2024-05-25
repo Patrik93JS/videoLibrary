@@ -2,16 +2,16 @@
 
 import { ListCategory } from '../components/server/category/ListCategory';
 import { ListFiles } from '../components/server/file/ListFiles';
-import { StyledLink } from '../components/server/reusable/StyledLink';
+import { Link } from '../components/ui/reusable/Link';
 
 const Home = () => {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
 			<ListCategory />
-			<StyledLink href="/uploadFile">Upload file</StyledLink>
-			<StyledLink href="/createCategory" variant="secondary">
+			<Link href="/uploadFile">Upload file</Link>
+			<Link href="/createCategory" variant="secondary">
 				Create category
-			</StyledLink>
+			</Link>
 			<ListFiles />
 		</main>
 	);
