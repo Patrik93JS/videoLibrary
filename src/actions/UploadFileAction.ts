@@ -7,8 +7,7 @@ import { uploadFileSchema } from '../util/schemas/uploadFileSchema';
 
 export const uploadFileAction = async (state: unknown, data: FormData) => {
 	const formData = Object.fromEntries(data);
-	const parsed = uploadFileSchema.parse(formData);
-	const { video, image, name, description, categoryId } = parsed;
+	const { video, image, name, description, categoryId } = uploadFileSchema.parse(formData);
 
 	const db = await withDatabase();
 
