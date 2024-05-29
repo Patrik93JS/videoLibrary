@@ -1,19 +1,29 @@
 'use server';
 
-import { withDatabase } from '@/database';
-import { FileController } from '@/database/controllers';
+import { revalidateTag } from 'next/cache';
+import { withDatabase } from '../database';
+import { FileController, VideoController } from '../database/controllers';
+import { uploadFileSchema } from '../util/schemas/uploadFileSchema';
 
-export const UploadFileAction = async (data: FormData) => {
-	'use server';
-	const file = data.get('file') as File;
-
-	if (!file) {
-		throw new Error('No file uploaded');
-	}
-
-	if (!file.type.match(/image\/(jpeg|png|gif|webp|svg\+xml)|video\/(mp4|webm|ogg)/)) return;
+export const uploadFileAction = async (state: unknown, data: FormData) => {
+	const formData = Object.fromEntries(data);
+	const { video, image, name, description, categoryId } = uploadFileSchema.parse(formData);
 
 	const db = await withDatabase();
 
-	await new FileController(db).upload(file);
+	const fileController = new FileController(db);
+	const uploadedVideo = await fileController.upload(video);
+	const uploadedImage = await fileController.upload(image);
+
+	const videoFile = new VideoController(db);
+
+	const result = videoFile.create({
+		files: [uploadedImage, uploadedVideo],
+		category: { id: categoryId },
+		description: description,
+		name: name,
+	});
+
+	revalidateTag('result');
+	return result;
 };

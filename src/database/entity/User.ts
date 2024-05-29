@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, type Relation } from 'typeorm';
-import { CommonEntity } from '@/database/utils/CommonEntity';
+import { CommonEntity } from '../utils/CommonEntity';
 import { Role } from './Role';
 
 @Entity()

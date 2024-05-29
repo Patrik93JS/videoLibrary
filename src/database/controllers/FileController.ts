@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
-import { S3Manager } from '@/database/controllers/S3Manager';
-import { BaseController } from '@/database/utils/BaseController';
 import { File as FileEntity } from '../entity/File';
+import { BaseController } from '../utils/BaseController';
+import { S3Manager } from './S3Manager';
 
 export class FileController extends BaseController<FileEntity> {
 	constructor(database: DataSource) {

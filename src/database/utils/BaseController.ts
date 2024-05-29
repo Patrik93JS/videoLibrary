@@ -1,6 +1,6 @@
 import { DataSource, ObjectType, Repository } from 'typeorm';
-import { CommonEntity } from '@/database/utils/CommonEntity';
-import { PAGINATION_LIMIT } from '@/util/constants';
+import { PAGINATION_LIMIT } from '../../util/constants';
+import { CommonEntity } from './CommonEntity';
 
 export abstract class BaseController<Entity extends CommonEntity> {
 	protected repository: Repository<Entity>;
@@ -9,10 +9,11 @@ export abstract class BaseController<Entity extends CommonEntity> {
 		this.repository = database.getRepository(entity);
 	}
 
-	async findById(id: Entity['id']) {
+	async findById(id: Entity['id'], props?: Omit<Parameters<(typeof this.repository)['findOne']>[0], 'where'>) {
 		return this.repository.findOne({
 			// @ts-expect-error id has to exists because we are extending CommonEntity
 			where: { id },
+			...props,
 		});
 	}
 

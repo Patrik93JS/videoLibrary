@@ -38,3 +38,5 @@ next-env.d.ts
 # docker
 .my_postgres_data
 .s3
+
+.env

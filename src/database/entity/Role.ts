@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, type Relation } from 'typeorm';
-import { CommonEntity } from '@/database/utils/CommonEntity';
-import { roles, UserRole } from '@/util/constants';
+import { roles, UserRole } from '../../util/constants';
+import { CommonEntity } from '../utils/CommonEntity';
 import { User } from './User';
 
 @Entity()

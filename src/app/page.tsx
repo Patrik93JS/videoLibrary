@@ -1,17 +1,20 @@
 'use server';
 
-import { Uploader } from '@/components/server/Uploader';
-import { CreateUserForm } from '@/components/server/user/CreateUserForm';
-import { UpdateUserForm } from '@/components/server/user/UpdateUserForm';
-import { UserCard } from '@/components/server/user/UserCard';
+import { ListCategory } from '../components/server/category/ListCategory';
+import { ListFiles } from '../components/server/file/ListFiles';
+import { Link } from '../components/ui/reusable/Link';
 
-export default async function Home() {
+const Home = () => {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			<CreateUserForm />
-			<UserCard />
-			<UpdateUserForm />
-			<Uploader />
+		<main className="flex  flex-col items-center justify-between p-24">
+			<ListCategory />
+			<Link href="/uploadFile">Upload file</Link>
+			<Link href="/createCategory" variant="secondary">
+				Create category
+			</Link>
+			<ListFiles />
 		</main>
 	);
-}
+};
+
+export default Home;

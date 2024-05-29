@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
-import { BaseController } from '@/database/utils/BaseController';
 import { Role } from '../entity/Role';
+import { BaseController } from '../utils/BaseController';
 
 export class RoleController extends BaseController<Role> {
 	constructor(database: DataSource) {
