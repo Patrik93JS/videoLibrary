@@ -6,4 +6,8 @@ export class UserController extends BaseController<User> {
 	constructor(database: DataSource) {
 		super(database, User);
 	}
+
+	findByClerkId(clerkId: string) {
+		return this.repository.findOne({ where: { clerkId } });
+	}
 }

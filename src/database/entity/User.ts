@@ -13,6 +13,9 @@ export class User extends CommonEntity {
 	@Column({ type: 'varchar', nullable: false })
 	password: string;
 
+	@Column({ type: 'varchar', nullable: false, unique: true })
+	clerkId: string;
+
 	@ManyToOne(() => Role, (role) => role.users)
 	role: Relation<Role>;
 }
