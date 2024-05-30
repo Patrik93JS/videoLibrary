@@ -4,11 +4,13 @@ import { revalidateTag } from 'next/cache';
 import { withDatabase } from '../database';
 import { FileController, VideoController } from '../database/controllers';
 import { uploadFileSchema } from '../util/schemas/uploadFileSchema';
+import { getCurrentUserAction } from './getCurrentUserAction';
 
 export const uploadFileAction = async (state: unknown, data: FormData) => {
 	const formData = Object.fromEntries(data);
 	const { video, image, name, description, categoryId } = uploadFileSchema.parse(formData);
 
+	const user = await getCurrentUserAction();
 	const db = await withDatabase();
 
 	const fileController = new FileController(db);
@@ -22,6 +24,7 @@ export const uploadFileAction = async (state: unknown, data: FormData) => {
 		category: { id: categoryId },
 		description: description,
 		name: name,
+		user: { id: user?.id },
 	});
 
 	revalidateTag('result');

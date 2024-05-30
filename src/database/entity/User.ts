@@ -10,9 +10,6 @@ export class User extends CommonEntity {
 	@Column({ type: 'varchar', unique: true })
 	email: string;
 
-	@Column({ type: 'varchar', nullable: false })
-	password: string;
-
 	@Column({ type: 'varchar', nullable: false, unique: true })
 	clerkId: string;
 
