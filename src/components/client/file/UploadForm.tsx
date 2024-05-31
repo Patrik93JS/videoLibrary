@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { type FC } from 'react';
 import type { Category } from 'src/database/entity/Category';
-import { uploadFileAction } from '../../../actions/UploadFileAction';
+import { uploadFileAction } from '../../../actions/uploadFileAction';
 import { uploadFileSchema } from '../../../util/schemas/uploadFileSchema';
 import { Button } from '../../ui/form/Button';
 import { FormContext } from '../../ui/form/FormContext';

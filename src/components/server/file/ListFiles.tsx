@@ -1,9 +1,12 @@
 import Image from 'next/image';
+import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { withDatabase } from '../../../database';
 import { FileController } from '../../../database/controllers';
 import { Link } from '../../ui/reusable/Link';
 
 export const ListFiles = async () => {
+	const userEntity = await getCurrentUserAction();
+
 	const db = await withDatabase();
 	const fileController = new FileController(db);
 	const dataFiles = await fileController.list(1, 355);
@@ -22,6 +25,7 @@ export const ListFiles = async () => {
 									<Image src={file.url} alt={file.video?.name} width={100} height={0} />
 								</div>
 							</Link>
+							<p className="flex justify-center">{userEntity.name}</p>
 						</div>
 					);
 				})}
