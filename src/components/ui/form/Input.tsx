@@ -15,7 +15,9 @@ export const Input: FC<Props> = ({ name, title, hidden, ...props }) => {
 	} = useFormContext();
 	return (
 		<div className="mb-4" hidden={hidden}>
-			<p className="block text-sm font-medium text-gray-700">{title}</p>
+			<label htmlFor={name} className="block text-sm font-medium text-gray-700">
+				{title}
+			</label>
 			<input
 				id={name}
 				{...register(name)}

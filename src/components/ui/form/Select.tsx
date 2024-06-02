@@ -15,14 +15,17 @@ export const Select: FC<Props> = ({ name, title, options, className }) => {
 		register,
 		formState: { errors },
 	} = useFormContext();
+
 	return (
 		<div className="mb-4">
 			<div className="flex items-center">
-				<p className="block text-sm font-medium text-gray-700 mr-4">{title}</p>
+				<label htmlFor={name} className="block text-sm font-medium text-gray-700 mr-4">
+					{title}
+				</label>
 				<select id={name} {...register(name)} className={`${className} form-select`}>
-					{options.map((option) => (
-						<option key={option.value} value={option.value}>
-							{option.label}
+					{options.map(({ label, value }) => (
+						<option key={value} value={value}>
+							{label}
 						</option>
 					))}
 				</select>
