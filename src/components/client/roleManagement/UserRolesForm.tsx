@@ -49,7 +49,7 @@ export const UserRolesForm: FC<Props> = ({ roles, closeModal, selectedUser }) =>
 				}}
 				defaultValues={{
 					userId: selectedUser.id,
-					role: selectedUser.id,
+					role: selectedUser.role.id,
 				}}
 			>
 				<CloseRedirectLink />
