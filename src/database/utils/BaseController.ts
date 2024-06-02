@@ -37,6 +37,7 @@ export abstract class BaseController<Entity extends CommonEntity> {
 		return this.repository.find({
 			skip,
 			take: limit,
+			loadEagerRelations: true,
 		});
 	}
 }

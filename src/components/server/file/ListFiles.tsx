@@ -22,7 +22,7 @@ export const ListFiles = async () => {
 							<p className="flex justify-center">{file.video?.name}</p>
 							<Link href={`/${file.video?.id}`} variant="image">
 								<div className="relative block h-[100px] w-[100px]">
-									<Image src={file.url} alt={file.video?.name} width={100} height={0} />
+									<Image src={file.url} alt={file.video?.name} width={100} height={100} />
 								</div>
 							</Link>
 							<p className="flex justify-center">{userEntity.name}</p>

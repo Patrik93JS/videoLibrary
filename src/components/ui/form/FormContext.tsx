@@ -11,16 +11,18 @@ type Props = {
 	children: ReactNode;
 	action: (state: unknown, data: FormData) => Promise<unknown | undefined>;
 	onSuccess?: () => void;
+	defaultValues?: Record<string, string | number>;
 } & Omit<
 	DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
 	'className' | 'children' | 'ref' | 'action' | 'onSubmit' | 'children'
 >;
 
-export const FormContext: FC<Props> = ({ schema, children, action, onSuccess, ...formProps }) => {
+export const FormContext: FC<Props> = ({ schema, children, action, onSuccess, defaultValues, ...formProps }) => {
 	const [state, mutate] = useFormState(action, undefined);
 
 	const form = useForm({
 		resolver: zodResolver(schema),
+		defaultValues: { defaultValues },
 	});
 
 	const formRef = useRef<HTMLFormElement>(null);
