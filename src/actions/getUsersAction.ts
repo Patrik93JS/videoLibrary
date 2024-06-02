@@ -10,7 +10,7 @@ export const getUserAction = async () => {
 		const userController = new UserController(db);
 		const users = await userController.list(1, usersListLength);
 
-		return users.map((user) => ({ ...user }));
+		return users.map((user) => ({ ...user, role: { ...user.role } }));
 	} catch (error) {
 		console.error('Error fetching users:', error);
 		throw error;
