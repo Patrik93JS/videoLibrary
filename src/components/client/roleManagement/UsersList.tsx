@@ -3,6 +3,7 @@ import { FC, useState } from 'react';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
 import { Button } from '../../ui/form/Button';
+import { CloseRedirectLink } from '../../ui/reusable/CloseRedirectLink';
 import { UserRolesForm } from './UserRolesForm';
 
 type Props = {
@@ -16,6 +17,7 @@ export const UsersList: FC<Props> = ({ roles, users }) => {
 	return (
 		<>
 			<div className="overflow-x-auto">
+				<CloseRedirectLink />
 				<table className="min-w-full w-full">
 					<thead>
 						<tr>

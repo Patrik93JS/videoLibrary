@@ -2,13 +2,13 @@
 
 import { redirect } from 'next/navigation';
 import { FC, useEffect } from 'react';
-import { Input } from 'src/components/ui/form/Input';
 import { updateUserAction } from '../../../actions/updateUserAction';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
 import { userRolesSchema } from '../../../util/schemas/userRolesSchema';
 import { Button } from '../../ui/form/Button';
 import { FormContext } from '../../ui/form/FormContext';
+import { Input } from '../../ui/form/Input';
 import { Select } from '../../ui/form/Select';
 import { CloseRedirectLink } from '../../ui/reusable/CloseRedirectLink';
 
@@ -52,7 +52,7 @@ export const UserRolesForm: FC<Props> = ({ roles, closeModal, selectedUser }) =>
 					role: selectedUser.role.id,
 				}}
 			>
-				<CloseRedirectLink />
+				<CloseRedirectLink onClick={closeModal} href="/admin" />
 				<div className="mb-4 bg-white p-8 rounded-xl">
 					<Input type="text" name="userId" title="User Id" hidden />
 					<Select name="role" options={options} title="Select Role" />
