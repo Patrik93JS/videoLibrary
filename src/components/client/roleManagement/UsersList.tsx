@@ -1,8 +1,7 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
-import { useModal } from '../../../util/hooks/useModal';
 import { Button } from '../../ui/form/Button';
 import { UserRolesForm } from './UserRolesForm';
 
@@ -12,7 +11,7 @@ type Props = {
 };
 
 export const UsersList: FC<Props> = ({ roles, users }) => {
-	const { isOpen, openModal, closeModal } = useModal();
+	const [selectedUser, setSelectedUser] = useState<User>();
 
 	return (
 		<>
@@ -35,7 +34,7 @@ export const UsersList: FC<Props> = ({ roles, users }) => {
 								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/2">
 									<div className="flex justify-between items-center">
 										<span>{user.role?.name}</span>
-										<Button onClick={() => openModal()}>Edit</Button>
+										<Button onClick={() => setSelectedUser(user)}>Edit</Button>
 									</div>
 								</td>
 							</tr>
@@ -43,7 +42,7 @@ export const UsersList: FC<Props> = ({ roles, users }) => {
 					</tbody>
 				</table>
 			</div>
-			{isOpen && <UserRolesForm roles={roles} closeModal={closeModal} users={users} />}
+			{selectedUser && <UserRolesForm roles={roles} closeModal={() => setSelectedUser(undefined)} selectedUser={selectedUser} />}
 		</>
 	);
 };

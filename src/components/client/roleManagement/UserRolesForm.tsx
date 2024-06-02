@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { FC, useEffect } from 'react';
+import { Input } from 'src/components/ui/form/Input';
 import { updateUserAction } from '../../../actions/updateUserAction';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
@@ -13,23 +14,15 @@ import { CloseRedirectLink } from '../../ui/reusable/CloseRedirectLink';
 
 type Props = {
 	roles: Role[];
-	users: User[];
+	selectedUser: User;
 	closeModal: () => void;
 };
 
-export const UserRolesForm: FC<Props> = ({ roles, closeModal, users }) => {
+export const UserRolesForm: FC<Props> = ({ roles, closeModal, selectedUser }) => {
 	const options = roles.map((role) => ({
 		label: role.name,
 		value: role.id,
 	}));
-
-	const defaultValues = {
-		userId: users[0]?.id || '',
-		role: 'user',
-	};
-
-	//todo default data
-	// selectedUser pres react hook form
 
 	useEffect(() => {
 		const handleEsc = (event: KeyboardEvent) => {
@@ -54,10 +47,14 @@ export const UserRolesForm: FC<Props> = ({ roles, closeModal, users }) => {
 					closeModal();
 					redirect('/admin');
 				}}
-				defaultValues={defaultValues}
+				defaultValues={{
+					userId: selectedUser.id,
+					role: selectedUser.id,
+				}}
 			>
 				<CloseRedirectLink />
 				<div className="mb-4 bg-white p-8 rounded-xl">
+					<Input type="text" name="userId" title="User Id" hidden />
 					<Select name="role" options={options} title="Select Role" />
 					<Button type="submit">Save Changes</Button>
 				</div>

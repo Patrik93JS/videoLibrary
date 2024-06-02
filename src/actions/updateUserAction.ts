@@ -15,5 +15,5 @@ export const updateUserAction = async (state: unknown, data: FormData) => {
 	const user = await userController.update(userId, { role: { id: role } });
 
 	revalidateTag('user');
-	return user;
+	return JSON.parse(JSON.stringify(user));
 };
