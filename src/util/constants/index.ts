@@ -18,7 +18,7 @@ export const S3Config = {
 };
 export const categoryListLenght = 20;
 
-export const usersListLength = 20;
+export const usersListLength = 50;
 
 export const fileMatcherSchema = (fileTypeRegexp: RegExp) =>
 	z
