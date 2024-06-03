@@ -8,14 +8,16 @@ type Props = {
 	title: ReactNode;
 } & Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'className' | 'name' | 'id' | 'children'>;
 
-export const Input: FC<Props> = ({ name, title, ...props }) => {
+export const Input: FC<Props> = ({ name, title, hidden, ...props }) => {
 	const {
 		register,
 		formState: { errors },
 	} = useFormContext();
 	return (
-		<div className="mb-4">
-			<p className="block text-sm font-medium text-gray-700">{title}</p>
+		<div className="mb-4" hidden={hidden}>
+			<label htmlFor={name} className="block text-sm font-medium text-gray-700">
+				{title}
+			</label>
 			<input
 				id={name}
 				{...register(name)}

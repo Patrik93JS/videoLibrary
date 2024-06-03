@@ -1,26 +1,35 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DetailedHTMLProps, type FC, FormHTMLAttributes, ReactNode, useEffect, useRef } from 'react';
+import { DetailedHTMLProps, FormHTMLAttributes, ReactNode, useEffect, useRef } from 'react';
 import { useFormState } from 'react-dom';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-type Props = {
-	schema: z.ZodObject<z.ZodRawShape>;
+type Props<T extends z.ZodObject<z.ZodRawShape>> = {
+	schema: T;
 	children: ReactNode;
 	action: (state: unknown, data: FormData) => Promise<unknown | undefined>;
 	onSuccess?: () => void;
+	defaultValues?: DefaultValues<z.TypeOf<T>>;
 } & Omit<
 	DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
 	'className' | 'children' | 'ref' | 'action' | 'onSubmit' | 'children'
 >;
 
-export const FormContext: FC<Props> = ({ schema, children, action, onSuccess, ...formProps }) => {
+export const FormContext = <T extends z.ZodObject<z.ZodRawShape>>({
+	schema,
+	children,
+	action,
+	onSuccess,
+	defaultValues,
+	...formProps
+}: Props<T>) => {
 	const [state, mutate] = useFormState(action, undefined);
 
 	const form = useForm({
 		resolver: zodResolver(schema),
+		defaultValues,
 	});
 
 	const formRef = useRef<HTMLFormElement>(null);

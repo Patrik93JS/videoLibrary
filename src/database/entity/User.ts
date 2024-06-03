@@ -13,6 +13,6 @@ export class User extends CommonEntity {
 	@Column({ type: 'varchar', nullable: false, unique: true })
 	clerkId: string;
 
-	@ManyToOne(() => Role, (role) => role.users)
+	@ManyToOne(() => Role, (role) => role.users, { eager: true })
 	role: Relation<Role>;
 }

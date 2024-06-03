@@ -11,7 +11,11 @@ const Home = async () => {
 	if (!user) return <div>Not signed in</div>;
 	return (
 		<main className="flex  flex-col items-center justify-between p-24">
+			<Link href="/admin" variant="secondary">
+				Admin system
+			</Link>
 			<ListCategory />
+
 			<Link href="/uploadFile">Upload file</Link>
 			<Link href="/createCategory" variant="secondary">
 				Create category

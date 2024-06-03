@@ -6,6 +6,7 @@ import { User } from './entity/User';
 import { Role } from './entity/Role';
 import { Video } from './entity/Video';
 import { File } from './entity/File';
+import { seedData } from './seed/seedData';
 
 export const database = new DataSource({
 	type: 'postgres',
@@ -24,6 +25,7 @@ export const database = new DataSource({
 export const withDatabase = async () => {
 	if (!database.isInitialized) {
 		await database.initialize();
+		await seedData();
 	}
 	return database;
 };
