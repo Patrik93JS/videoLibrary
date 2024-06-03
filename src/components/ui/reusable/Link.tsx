@@ -10,7 +10,7 @@ const linkStyles = tv({
 			primary: 'bg-black text-white py-2 px-4 rounded-lg',
 			secondary: 'mt-10 bg-black text-white border py-2 px-4 rounded-lg',
 			image: 'bg-red max-w-10 max-h-10',
-			closeLink: 'absolute top-4 right-4',
+			close: 'absolute top-4 right-4',
 		},
 	},
 	defaultVariants: {
