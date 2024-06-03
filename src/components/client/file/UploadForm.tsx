@@ -6,7 +6,7 @@ import { Link } from 'src/components/ui/reusable/Link';
 import type { Category } from 'src/database/entity/Category';
 import { uploadFileAction } from '../../../actions/uploadFileAction';
 import { uploadFileSchema } from '../../../util/schemas/uploadFileSchema';
-import { Button } from '../../ui/form/Button';
+import { Button } from '../../ui/reusable/Button';
 import { FormContext } from '../../ui/form/FormContext';
 import { Input } from '../../ui/form/Input';
 import { Select } from '../../ui/form/Select';
