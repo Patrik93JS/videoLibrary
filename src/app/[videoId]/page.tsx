@@ -1,5 +1,5 @@
 'use server';
-import { CloseRedirectLink } from '../../components/ui/reusable/CloseRedirectLink';
+import { Link } from 'src/components/ui/reusable/Link';
 import { fetchVideoData } from '../../util/helpers/fetchVideoData';
 
 const Video = async ({ params }: { params: { videoId: string } }) => {
@@ -10,7 +10,7 @@ const Video = async ({ params }: { params: { videoId: string } }) => {
 
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-between p-24 ">
-			<CloseRedirectLink />
+			<Link href="/" variant="close" />
 			<video src={videoUrl} controls className=" w-10/12 max-h-96" />
 			<p className="mt-1">{videoDescription}</p>
 		</div>

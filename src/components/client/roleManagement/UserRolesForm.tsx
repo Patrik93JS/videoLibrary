@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { FC } from 'react';
+import { Link } from 'src/components/ui/reusable/Link';
 import { useHandleEscModal } from 'src/util/hooks/useHanndleEscModal';
 import { updateUserAction } from '../../../actions/updateUserAction';
 import { Role } from '../../../database/entity/Role';
@@ -11,7 +12,6 @@ import { Button } from '../../ui/form/Button';
 import { FormContext } from '../../ui/form/FormContext';
 import { Input } from '../../ui/form/Input';
 import { Select } from '../../ui/form/Select';
-import { CloseRedirectLink } from '../../ui/reusable/CloseRedirectLink';
 
 type Props = {
 	roles: Role[];
@@ -41,7 +41,7 @@ export const UserRolesForm: FC<Props> = ({ roles, closeModal, selectedUser }) =>
 					role: selectedUser.role.id,
 				}}
 			>
-				<CloseRedirectLink onClick={closeModal} href="/admin" />
+				<Link onClick={closeModal} href="/admin" variant="close" />
 				<div className="mb-4 bg-white p-8 rounded-xl">
 					<Input type="text" name="userId" title="User Id" hidden />
 					<Select name="role" options={options} title="Select Role" />

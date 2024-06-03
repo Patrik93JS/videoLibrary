@@ -2,6 +2,7 @@
 
 import NextLink, { LinkProps } from 'next/link';
 import { FC, PropsWithChildren } from 'react';
+import { IoCloseSharp } from 'react-icons/io5';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const linkStyles = tv({
@@ -21,9 +22,11 @@ const linkStyles = tv({
 type Props = LinkProps & VariantProps<typeof linkStyles>;
 
 export const Link: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
+	const { variant, ...restProps } = props;
+
 	return (
-		<NextLink {...props} className={linkStyles(props)}>
-			{children}
+		<NextLink {...restProps} className={linkStyles(props)}>
+			{variant === 'close' ? <IoCloseSharp className="text-gray-600 hover:text-gray-900 hover:bg-red-300 h-5 w-5" /> : children}
 		</NextLink>
 	);
 };
