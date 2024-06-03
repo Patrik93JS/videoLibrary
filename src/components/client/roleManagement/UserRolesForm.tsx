@@ -1,7 +1,8 @@
 'use client';
 
 import { redirect } from 'next/navigation';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
+import { useHandleEscModal } from 'src/util/hooks/useHanndleEscModal';
 import { updateUserAction } from '../../../actions/updateUserAction';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
@@ -24,19 +25,7 @@ export const UserRolesForm: FC<Props> = ({ roles, closeModal, selectedUser }) =>
 		value: role.id,
 	}));
 
-	useEffect(() => {
-		const handleEsc = (event: KeyboardEvent) => {
-			if (event.key === 'Escape') {
-				closeModal();
-			}
-		};
-
-		document.addEventListener('keydown', handleEsc);
-
-		return () => {
-			document.removeEventListener('keydown', handleEsc);
-		};
-	}, [closeModal]);
+	useHandleEscModal(closeModal);
 
 	return (
 		<div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
