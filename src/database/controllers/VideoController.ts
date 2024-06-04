@@ -8,6 +8,10 @@ export class VideoController extends BaseController<Video> {
 	}
 
 	listAllWithFiles(userId?: string) {
-		return this.repository.find({ where: userId ? { user: { id: userId } } : undefined, relations: { files: true } });
+		return this.repository.find({ where: userId ? { user: { id: userId } } : undefined, relations: { files: true, user: true } });
+	}
+
+	listAllUsersId() {
+		return this.repository.find({ relations: { user: true } });
 	}
 }

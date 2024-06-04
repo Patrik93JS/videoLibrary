@@ -1,9 +1,9 @@
 'use client';
 import { FC, useState } from 'react';
-import { Link } from 'src/components/ui/reusable/Link';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
 import { Button } from '../../ui/reusable/Button';
+import { Link } from '../../ui/reusable/Link';
 import { UserRolesForm } from './UserRolesForm';
 
 type Props = {
