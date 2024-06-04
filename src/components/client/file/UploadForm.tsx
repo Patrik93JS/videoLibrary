@@ -2,8 +2,8 @@
 
 import { redirect } from 'next/navigation';
 import { type FC } from 'react';
+import { uploadFileAction } from 'src/actions/UploadFileAction';
 import type { Category } from 'src/database/entity/Category';
-import { uploadFileAction } from '../../../actions/uploadFileAction';
 import { uploadFileSchema } from '../../../util/schemas/uploadFileSchema';
 import { FormContext } from '../../ui/form/FormContext';
 import { Input } from '../../ui/form/Input';

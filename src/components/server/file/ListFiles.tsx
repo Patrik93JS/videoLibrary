@@ -14,15 +14,17 @@ export const ListFiles = async () => {
 	const fileController = new FileController(db);
 	const dataFiles = await fileController.list(1, 355);
 
-	const [mutate] = useFormState(async (state: void, payload: { videoId: string }) => {
+	const [, mutate] = useFormState(async (state: void, payload: FormData) => {
 		await deleteVideo(payload);
 	}, undefined);
 
 	const handleDelete = async (videoId: string) => {
-		if (!videoId) {
-			return;
-		}
-		await mutate({ videoId });
+		if (!videoId) return;
+
+		const formData = new FormData();
+		formData.append('videoId', videoId);
+
+		await mutate(formData);
 	};
 
 	return (
