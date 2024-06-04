@@ -1,10 +1,9 @@
 'use client';
 import { useFormState } from 'react-dom';
-import { deleteVideo } from 'src/actions/deleteVideo';
-import { Button } from 'src/components/ui/reusable/Button';
+import { deleteVideo } from '../../../actions/deleteVideo';
+import { Button } from '../../ui/reusable/Button';
 
 export const DeleteButton = ({ videoId }: { videoId: string }) => {
-	'use client';
 	const [, mutate] = useFormState(async (state: void, payload: FormData) => {
 		await deleteVideo(payload);
 	}, undefined);

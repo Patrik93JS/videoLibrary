@@ -1,5 +1,5 @@
 'use server';
-import { Link } from 'src/components/ui/reusable/Link';
+import { Link } from '../../components/ui/reusable/Link';
 import { fetchVideoData } from '../../util/helpers/fetchVideoData';
 
 const Video = async ({ params }: { params: { videoId: string } }) => {
