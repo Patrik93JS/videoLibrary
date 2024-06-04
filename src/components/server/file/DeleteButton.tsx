@@ -14,7 +14,7 @@ export const DeleteButton = ({ videoId }: { videoId: string }) => {
 		const formData = new FormData();
 		formData.append('videoId', videoId);
 
-		await mutate(formData);
+		mutate(formData);
 	};
 
 	return (
