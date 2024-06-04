@@ -1,31 +1,17 @@
+'use server';
 import Image from 'next/image';
-import { useFormState } from 'react-dom';
-import { deleteVideo } from '../../../actions/deleteVideo';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { withDatabase } from '../../../database';
 import { FileController } from '../../../database/controllers';
-import { Button } from '../../ui/reusable/Button';
 import { Link } from '../../ui/reusable/Link';
+import { DeleteButton } from './DeleteButton';
 
 export const ListFiles = async () => {
 	const userEntity = await getCurrentUserAction();
 
 	const db = await withDatabase();
-	const fileController = new FileController(db);
+	const fileController = new FileController(db); //videoCOntroller ne fileController, delete potom bude taky mazat video ne file
 	const dataFiles = await fileController.list(1, 355);
-
-	const [, mutate] = useFormState(async (state: void, payload: FormData) => {
-		await deleteVideo(payload);
-	}, undefined);
-
-	const handleDelete = async (videoId: string) => {
-		if (!videoId) return;
-
-		const formData = new FormData();
-		formData.append('videoId', videoId);
-
-		await mutate(formData);
-	};
 
 	return (
 		<div className="flex flex-wrap justify-center gap-4 my-10 mx-5">
@@ -41,9 +27,7 @@ export const ListFiles = async () => {
 									<Image src={file.url} alt={file.video?.name} width={100} height={100} />
 								</div>
 							</Link>
-							<Button variant="delete" onClick={() => handleDelete(file.video?.id)}>
-								Delete
-							</Button>
+							<DeleteButton videoId={file.video?.id} />
 							<p className="flex justify-center">{userEntity.name}</p>
 						</div>
 					);
