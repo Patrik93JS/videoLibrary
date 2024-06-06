@@ -1,22 +1,25 @@
 'use server';
 import { type FC } from 'react';
-import { FilterFiles } from 'src/components/client/file/FilterFiles';
-import { isFilterOn } from 'src/components/client/file/types';
+import { getCurrentUserAction } from '../actions/getCurrentUserAction';
+import { FilterFiles } from '../components/client/file/FilterFiles';
+import { isFilterOn } from '../components/client/file/types';
 import { ListCategory } from '../components/server/category/ListCategory';
 import { Link } from '../components/ui/reusable/Link';
 
 const Home: FC<{
 	searchParams?: { [key: string]: string | string[] | undefined };
-}> = ({ searchParams }) => {
+}> = async ({ searchParams }) => {
 	const filterParam = searchParams?.['filter'];
 	const filter = isFilterOn(filterParam) ? filterParam : 'on';
+	const userEntity = await getCurrentUserAction();
 
 	return (
 		<main className="flex  flex-col items-center justify-between p-24">
-			<Link href="/admin" variant="secondary">
-				Admin system
-			</Link>
-
+			{userEntity?.role.name === 'admin' ? (
+				<Link href="/admin" variant="secondary">
+					Admin system
+				</Link>
+			) : null}
 			<ListCategory />
 
 			<Link href="/uploadFile">Upload file</Link>

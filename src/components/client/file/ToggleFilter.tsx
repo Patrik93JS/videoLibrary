@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { FC, useState } from 'react';
-import { Button } from 'src/components/ui/reusable/Button';
+import { Button } from '../../ui/reusable/Button';
 import type { Filter } from './types';
 
 type Props = { filter: Filter };
