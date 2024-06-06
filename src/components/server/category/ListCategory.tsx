@@ -1,3 +1,4 @@
+'use server';
 import { withDatabase } from '../../../database';
 import { CategoryController } from '../../../database/controllers';
 

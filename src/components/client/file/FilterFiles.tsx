@@ -1,19 +1,15 @@
-'use client';
-
-import { useState } from 'react';
+'use server';
+import type { FC } from 'react';
 import { ListFiles } from '../../server/file/ListFiles';
-import { Button } from '../../ui/reusable/Button';
+import { ToggleFilter } from './ToggleFilter';
+import { Filter } from './types';
 
-export const FilterFiles = () => {
-	const [filter, setFilter] = useState('allVideos');
+type Props = { filter: Filter };
 
-	const toggleFilter = () => {
-		setFilter((prevFilter) => (prevFilter === 'allVideos' ? 'ownVideos' : 'allVideos'));
-	};
-
+export const FilterFiles: FC<Props> = ({ filter }) => {
 	return (
 		<div className="flex flex-col items-center">
-			<Button onClick={toggleFilter}>{filter === 'allVideos' ? 'Show My Videos' : 'Show All Videos'}</Button>
+			<ToggleFilter filter={filter} />
 			<ListFiles filter={filter} />
 		</div>
 	);
