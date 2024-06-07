@@ -1,26 +1,34 @@
 'use server';
-
-import { currentUser } from '@clerk/nextjs/server';
+import { type FC } from 'react';
+import { getCurrentUserAction } from '../actions/getCurrentUserAction';
+import { FilterFiles } from '../components/client/file/FilterFiles';
+import { isFilterOn } from '../components/client/file/types';
 import { ListCategory } from '../components/server/category/ListCategory';
-import { ListFiles } from '../components/server/file/ListFiles';
 import { Link } from '../components/ui/reusable/Link';
 
-const Home = async () => {
-	const user = await currentUser();
+const Home: FC<{
+	searchParams?: { [key: string]: string | string[] | undefined };
+}> = async ({ searchParams }) => {
+	const filterParam = searchParams?.['filter'];
+	const filter = isFilterOn(filterParam) ? filterParam : 'on';
+	const userEntity = await getCurrentUserAction();
 
-	if (!user) return <div>Not signed in</div>;
 	return (
 		<main className="flex  flex-col items-center justify-between p-24">
-			<Link href="/admin" variant="secondary">
-				Admin system
-			</Link>
+			{userEntity?.role.name === 'admin' && (
+				<Link href="/admin" variant="secondary">
+					Admin system
+				</Link>
+			)}
 			<ListCategory />
 
 			<Link href="/uploadFile">Upload file</Link>
-			<Link href="/createCategory" variant="secondary">
-				Create category
-			</Link>
-			<ListFiles />
+			{userEntity?.role.name === 'admin' && (
+				<Link href="/createCategory" variant="secondary">
+					Create category
+				</Link>
+			)}
+			<FilterFiles filter={filter} />
 		</main>
 	);
 };

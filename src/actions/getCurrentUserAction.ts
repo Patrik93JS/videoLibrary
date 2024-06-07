@@ -7,9 +7,7 @@ import { RoleController, UserController } from '../database/controllers';
 
 export const getCurrentUserAction = async () => {
 	const clerkUser = await currentUser();
-	if (!clerkUser) {
-		throw new Error('User not found');
-	}
+	if (!clerkUser) return;
 
 	const db = await withDatabase();
 	const userController = new UserController(db);

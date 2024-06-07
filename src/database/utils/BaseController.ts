@@ -28,7 +28,7 @@ export abstract class BaseController<Entity extends CommonEntity> {
 
 	async delete(id: Entity['id']) {
 		// @ts-expect-error id has to exists because we are extending CommonEntity
-		return this.repository.delete({ id });
+		return this.repository.softDelete({ id });
 	}
 
 	async list(page: number, limit = PAGINATION_LIMIT) {
