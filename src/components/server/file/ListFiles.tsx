@@ -17,7 +17,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 	const userId = userEntity?.id ?? '';
 	const db = await withDatabase();
 	const videoController = new VideoController(db);
-	const videos = await videoController.listAllWithFiles();
+	const videos = await videoController.listAllByUser();
 
 	const filteredVideos = filter === 'on' ? videos.filter((video) => video.user?.id === userId) : videos;
 

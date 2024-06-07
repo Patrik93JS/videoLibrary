@@ -1,6 +1,6 @@
 'use client';
 
-import { type ButtonHTMLAttributes, type DetailedHTMLProps, FC } from 'react';
+import { type ButtonHTMLAttributes, type DetailedHTMLProps, FC, PropsWithChildren } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import { tv, VariantProps } from 'tailwind-variants';
 
@@ -17,14 +17,12 @@ const buttonStyles = tv({
 	},
 });
 
-type Props = Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'className'> &
-	VariantProps<typeof buttonStyles>;
+type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & VariantProps<typeof buttonStyles>;
 
-export const Button: FC<Props> = ({ children, variant, ...props }) => {
-	const className = buttonStyles({ variant });
+export const Button: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
 	return (
-		<button className={className} {...props}>
-			{variant === 'close' ? <IoCloseSharp className="text-gray-600 hover:text-gray-900 hover:bg-red-300 h-5 w-5" /> : children}
+		<button {...props} className={buttonStyles(props)}>
+			{props.variant === 'close' ? <IoCloseSharp className="text-gray-600 hover:text-gray-900 hover:bg-red-300 h-5 w-5" /> : children}
 		</button>
 	);
 };

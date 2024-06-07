@@ -15,18 +15,19 @@ const Home: FC<{
 
 	return (
 		<main className="flex  flex-col items-center justify-between p-24">
-			{userEntity?.role.name === 'admin' ? (
+			{userEntity?.role.name === 'admin' && (
 				<Link href="/admin" variant="secondary">
 					Admin system
 				</Link>
-			) : null}
+			)}
 			<ListCategory />
 
 			<Link href="/uploadFile">Upload file</Link>
-			<Link href="/createCategory" variant="secondary">
-				Create category
-			</Link>
-
+			{userEntity?.role.name === 'admin' && (
+				<Link href="/createCategory" variant="secondary">
+					Create category
+				</Link>
+			)}
 			<FilterFiles filter={filter} />
 		</main>
 	);
