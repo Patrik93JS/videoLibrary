@@ -6,7 +6,11 @@ const AdminSystem = async () => {
 	const users = await getUserAction();
 	const roles = await getRoleAction();
 
-	return <UsersList users={users} roles={roles} />;
+	return (
+		<main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-800">
+			<UsersList users={users} roles={roles} />;
+		</main>
+	);
 };
 
 export default AdminSystem;

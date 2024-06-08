@@ -22,19 +22,21 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 	const filteredVideos = filter === 'on' ? videos.filter((video) => video.user?.id === userId) : videos;
 
 	return (
-		<div className="flex flex-wrap justify-center gap-4 my-10 mx-5">
+		<div className="grid grid-cols-4 gap-4 my-10 mx-5">
 			{filteredVideos.map((video) => {
 				const file = video.files.find((file) => file.minetype.match(/image\/(jpeg|png|gif|webp|svg\+xml)/));
 				if (!file) return;
 
 				return (
-					<div key={video?.id} className="border border-black rounded-md overflow-hidden">
-						<p className="flex justify-center">{video?.name}</p>
-						<Link href={`/${video?.id}`} variant="image">
-							<div className="relative block h-[100px] w-[100px]">
+					<div key={video.id} className="bg-gray-400 shadow-md hover:shadow-lg rounded-lg overflow-hidden transition-shadow">
+						<Link href={`/${video.id}`} variant="image">
+							<div className="relative w-full" style={{ height: '200px' }}>
 								<AsyncImage file={file} />
 							</div>
 						</Link>
+						<div className="p-4 flex justify-between items-center">
+							<h3 className="text-lg font-semibold">{video.name}</h3>
+						</div>
 						{(userEntity?.role.name === 'admin' || video.user?.id === userId) && <DeleteButton videoId={video.id} />}
 						<p className="flex justify-center">{userEntity?.name}</p>
 					</div>
@@ -52,5 +54,5 @@ const AsyncImage: FC<AsyncImageProsp> = async ({ file }) => {
 	const fileUrl = await new S3Manager().getFilePresignedUrl(file.id);
 	if (!fileUrl) return;
 
-	return <Image src={fileUrl} alt={file.name} width={100} height={100} />;
+	return <Image src={fileUrl} alt={file.name} layout="fill" objectFit="cover" className="object-cover w-full h-full" />;
 };

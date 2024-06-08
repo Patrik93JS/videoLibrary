@@ -8,10 +8,10 @@ export const ListCategory = async () => {
 	const data = await categoryController.list(1, 355);
 
 	return (
-		<div className="flex flex-wrap justify-center gap-4 my-10 mx-5">
+		<div className="grid grid-cols-3 gap-6 p-5">
 			{data.map((category) => (
-				<div key={category.id} className=" bg-white shadow-md rounded-lg p-4 flex items-center">
-					<div className="text-lg font-semibold">{category.name}</div>
+				<div key={category.id} className="bg-white shadow-lg rounded-lg p-4 flex items-center justify-center">
+					<h2 className="text-xl font-semibold text-center">{category.name}</h2>
 				</div>
 			))}
 		</div>

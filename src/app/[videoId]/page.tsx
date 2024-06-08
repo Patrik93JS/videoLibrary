@@ -1,5 +1,4 @@
 'use server';
-import { Link } from '../../components/ui/reusable/Link';
 import { fetchVideoData } from '../../util/helpers/fetchVideoData';
 
 const Video = async ({ params }: { params: { videoId: string } }) => {
@@ -9,10 +8,9 @@ const Video = async ({ params }: { params: { videoId: string } }) => {
 	const { videoUrl, videoDescription } = videoData;
 
 	return (
-		<div className="flex min-h-screen flex-col items-center justify-between p-24 ">
-			<Link href="/" variant="close" />
-			<video src={videoUrl} controls className=" w-10/12 max-h-96" />
-			<p className="mt-1">{videoDescription}</p>
+		<div className="flex flex-col items-center justify-center min-h-screen px-5 p-12 bg-gray-800">
+			<video src={videoUrl} controls className="w-full max-w-4xl max-h-96 rounded-lg shadow-xl" />
+			<p className="text-lg text-center my-4 text-white">{videoDescription}</p>
 		</div>
 	);
 };
