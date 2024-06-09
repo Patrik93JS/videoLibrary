@@ -28,9 +28,9 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 				if (!file) return;
 
 				return (
-					<div key={video.id} className="bg-gray-400 shadow-md hover:shadow-lg rounded-lg overflow-hidden transition-shadow">
+					<div key={video.id} className="bg-gray-400 shadow-md  rounded-lg overflow-hidden">
 						<Link href={`/${video.id}`} variant="image">
-							<div className="relative w-full" style={{ height: '200px' }}>
+							<div className="relative w-full " style={{ height: '200px' }}>
 								<AsyncImage file={file} />
 							</div>
 						</Link>
@@ -38,7 +38,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 							<h3 className="text-lg font-semibold">{video.name}</h3>
 						</div>
 						{(userEntity?.role.name === 'admin' || video.user?.id === userId) && <DeleteButton videoId={video.id} />}
-						<p className="flex justify-center">{userEntity?.name}</p>
+						<p className="flex justify-center m-2">{userEntity?.name}</p>
 					</div>
 				);
 			})}
