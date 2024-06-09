@@ -9,7 +9,7 @@ const Video = async ({ params }: { params: { videoId: string } }) => {
 	const { videoUrl, videoDescription, videoName } = videoData;
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen px-5 p-12 bg-gray-800">
+		<div className="flex flex-col items-center justify-center  px-5 p-12 bg-gray-800 h-screen w-screen fixed ">
 			<Head>
 				<title>{videoName} - Video Detail</title>
 				<meta name="description" content={videoDescription} />

@@ -11,7 +11,7 @@ const Home: FC<{
 	const filter = isFilterOn(filterParam) ? filterParam : 'on';
 
 	return (
-		<main className="flex h-screen fixed w-screen flex-col items-center justify-between p-12 bg-gray-800">
+		<main className="flex  flex-col items-center justify-between p-12 bg-gray-800">
 			<div className="text-center">
 				<p className="text-2xl font-bold underline decoration-sky-500/50 pb-4 text-white">All categories</p>
 				<ListCategory />

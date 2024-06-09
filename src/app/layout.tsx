@@ -37,7 +37,7 @@ const RootLayout = async ({
 			</Head>
 			<html lang="en">
 				<body className={inter.className}>
-					<header className="bg-gray-900 text-white flex justify-start items-center p-4">
+					<header className="bg-gray-900 text-white flex justify-start items-center p-4 ">
 						<Link href="/" variant="primary">
 							VideoLibrary
 						</Link>

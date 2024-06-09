@@ -23,7 +23,7 @@ export const usersListLength = 50;
 export const fileMatcherSchema = (fileTypeRegexp: RegExp) =>
 	z
 		.any()
-		.refine((file): file is File => (file && file.length > 0 && fileTypeRegexp.test(file[0].type)) || file.type.match(fileTypeRegexp));
+		.refine((file): file is File => (file && file.length > 0 && fileTypeRegexp.test(file[0].type)) || file.type?.match(fileTypeRegexp));
 
 export const videoType = fileMatcherSchema(/video\/(mp4|webm|ogg)/);
 export const imageType = fileMatcherSchema(/image\/(jpeg|png|gif|webp|svg\+xml)/);

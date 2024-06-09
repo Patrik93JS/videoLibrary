@@ -7,3 +7,16 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
+body,
+html {
+	margin: 0;
+	padding: 0;
+	overflow-y: unset;
+}
+
+.main {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
