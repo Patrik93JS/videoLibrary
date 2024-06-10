@@ -26,7 +26,7 @@ const RootLayout = async ({
 	const userEntity = await getCurrentUserAction();
 
 	return (
-		<ClerkProvider>
+		<>
 			<Head>
 				<title>Video Library</title>
 				<meta
@@ -35,25 +35,27 @@ const RootLayout = async ({
 				/>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
-			<html lang="en">
-				<body className={inter.className}>
-					<header className="bg-gray-900 text-white flex justify-start items-center p-4 ">
-						<Link href="/" variant="primary">
-							VideoLibrary
-						</Link>
+			<ClerkProvider>
+				<html lang="en">
+					<body className={inter.className}>
+						<header className="bg-gray-900 text-white flex justify-start items-center p-4 ">
+							<Link href="/" variant="primary">
+								VideoLibrary
+							</Link>
 
-						<div className="flex items-center gap-4">
-							<Link href="/uploadFile">Upload</Link>
-							{userEntity?.role.name === 'admin' && <Link href="/createCategory">Create category</Link>}
-							{userEntity?.role.name === 'admin' && <Link href="/admin">Admin system</Link>}
-							<SignedInButton />
-							<SignedOutButton />
-						</div>
-					</header>
-					<main>{children}</main>
-				</body>
-			</html>
-		</ClerkProvider>
+							<div className="flex items-center gap-4">
+								<Link href="/uploadFile">Upload</Link>
+								{userEntity?.role.name === 'admin' && <Link href="/createCategory">Create category</Link>}
+								{userEntity?.role.name === 'admin' && <Link href="/admin">Admin system</Link>}
+								<SignedInButton />
+								<SignedOutButton />
+							</div>
+						</header>
+						<main>{children}</main>
+					</body>
+				</html>
+			</ClerkProvider>
+		</>
 	);
 };
 

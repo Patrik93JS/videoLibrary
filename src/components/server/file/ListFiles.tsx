@@ -1,14 +1,12 @@
 'use server';
-import Image from 'next/image';
 import { type FC } from 'react';
 import type { Filter } from 'src/components/client/file/types';
-import type { File } from 'src/database/entity/File';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { withDatabase } from '../../../database';
 import { VideoController } from '../../../database/controllers';
-import { S3Manager } from '../../../database/controllers/S3Manager';
 import { DeleteButton } from '../../client/file/DeleteButton';
 import { Link } from '../../ui/reusable/Link';
+import { AsyncImage } from './AsyncImage';
 
 type Props = { filter: Filter };
 
@@ -22,7 +20,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 	const filteredVideos = filter === 'on' ? videos.filter((video) => video.user?.id === userId) : videos;
 
 	return (
-		<div className="grid grid-cols-4 gap-4 my-10 mx-5">
+		<div className="grid grid-cols-6 gap-4 my-10 mx-5">
 			{filteredVideos.map((video) => {
 				const file = video.files.find((file) => file.minetype.match(/image\/(jpeg|png|gif|webp|svg\+xml)/));
 				if (!file) return;
@@ -44,15 +42,4 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 			})}
 		</div>
 	);
-};
-
-type AsyncImageProsp = {
-	file: File;
-};
-
-const AsyncImage: FC<AsyncImageProsp> = async ({ file }) => {
-	const fileUrl = await new S3Manager().getFilePresignedUrl(file.id);
-	if (!fileUrl) return;
-
-	return <Image src={fileUrl} alt={file.name} layout="fill" objectFit="cover" className="object-cover w-full h-full" />;
 };
