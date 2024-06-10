@@ -27,3 +27,6 @@ export const fileMatcherSchema = (fileTypeRegexp: RegExp) =>
 
 export const videoType = fileMatcherSchema(/video\/(mp4|webm|ogg)/);
 export const imageType = fileMatcherSchema(/image\/(jpeg|png|gif|webp|svg\+xml)/);
+
+export const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+export const SITE_NAME = 'VideoLibrary';
