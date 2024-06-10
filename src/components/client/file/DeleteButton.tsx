@@ -1,5 +1,6 @@
 'use client';
 import { useFormState } from 'react-dom';
+import { IoTrashBin } from 'react-icons/io5';
 import { deleteVideo } from '../../../actions/deleteVideo';
 import { Button } from '../../ui/reusable/Button';
 
@@ -19,7 +20,7 @@ export const DeleteButton = ({ videoId }: { videoId: string }) => {
 
 	return (
 		<Button variant="delete" onClick={handleDelete}>
-			Delete
+			<IoTrashBin />
 		</Button>
 	);
 };

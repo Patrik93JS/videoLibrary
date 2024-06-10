@@ -3,7 +3,6 @@ import { FC, useState } from 'react';
 import { Role } from '../../../database/entity/Role';
 import { User } from '../../../database/entity/User';
 import { Button } from '../../ui/reusable/Button';
-import { Link } from '../../ui/reusable/Link';
 import { UserRolesForm } from './UserRolesForm';
 
 type Props = {
@@ -16,8 +15,7 @@ export const UsersList: FC<Props> = ({ roles, users }) => {
 
 	return (
 		<>
-			<div className="overflow-x-auto">
-				<Link href="/" variant="close" />
+			<div className="overflow-x-auto w-full h-full">
 				<table className="min-w-full w-full">
 					<thead>
 						<tr>

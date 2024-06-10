@@ -15,5 +15,6 @@ export const fetchVideoData = async ({ params }: { params: { videoId: string } }
 	if (!videoData) return;
 	const videoUrl = await s3.getFilePresignedUrl(videoData.id);
 	const videoDescription = data?.description;
-	return { s3, videoUrl, videoDescription };
+	const videoName = data?.name;
+	return { s3, videoUrl, videoDescription, videoName };
 };

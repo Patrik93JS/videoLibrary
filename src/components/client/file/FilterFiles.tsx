@@ -8,7 +8,7 @@ type Props = { filter: Filter };
 
 export const FilterFiles: FC<Props> = ({ filter }) => {
 	return (
-		<div className="flex flex-col items-center">
+		<div className="flex flex-col items-center bg-gray-800 h-screen">
 			<ToggleFilter filter={filter} />
 			<ListFiles filter={filter} />
 		</div>

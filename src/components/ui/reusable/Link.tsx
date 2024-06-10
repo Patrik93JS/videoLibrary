@@ -8,9 +8,9 @@ import { tv, type VariantProps } from 'tailwind-variants';
 const linkStyles = tv({
 	variants: {
 		variant: {
-			primary: 'bg-black text-white py-2 px-4 rounded-lg',
-			secondary: 'mt-10 bg-black text-white border py-2 px-4 rounded-lg',
-			image: 'bg-red max-w-10 max-h-10',
+			primary: 'bg-black text-white hover:text-gray-300 border py-2 px-4 mx-3 rounded-lg',
+			secondary: 'mt-10 bg-black text-white hover:text-gray-300 border py-2 px-4 rounded-lg',
+			image: 'max-w-10 max-h-10',
 			close: 'absolute top-4 right-4',
 		},
 	},
