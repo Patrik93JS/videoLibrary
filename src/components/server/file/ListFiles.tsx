@@ -4,7 +4,7 @@ import type { Filter } from 'src/components/client/file/types';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { withDatabase } from '../../../database';
 import { VideoController } from '../../../database/controllers';
-import { DeleteButton } from '../../client/file/DeleteButton';
+import { DeleteVideoButton } from '../../client/file/DeleteVideoButton';
 import { Link } from '../../ui/reusable/Link';
 import { AsyncImage } from './AsyncImage';
 
@@ -35,7 +35,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 						<div className="p-4 flex justify-between items-center">
 							<h3 className="text-lg font-semibold">{video.name}</h3>
 						</div>
-						{(userEntity?.role.name === 'admin' || video.user?.id === userId) && <DeleteButton videoId={video.id} />}
+						{(userEntity?.role.name === 'admin' || video.user?.id === userId) && <DeleteVideoButton videoId={video.id} />}
 						<p className="flex justify-center m-2">{userEntity?.name}</p>
 					</div>
 				);
