@@ -36,7 +36,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 							<h3 className="text-lg font-semibold">{video.name}</h3>
 						</div>
 						{(userEntity?.role.name === 'admin' || video.user?.id === userId) && <DeleteVideoButton videoId={video.id} />}
-						<p className="flex justify-center m-2">{userEntity?.name}</p>
+						<p className="flex justify-center m-2">{video.user.name ? video.user.name : video.user.email.split('@')[0]}</p>
 					</div>
 				);
 			})}
