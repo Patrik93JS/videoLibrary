@@ -18,11 +18,12 @@ export const metadata: Metadata = {
 		'Explore our vast collection of videos across multiple genres. From educational content to entertainment, discover videos that cater to your interests and stay updated with the latest trends.',
 };
 
-const RootLayout = async ({
-	children,
-}: Readonly<{
+type Props = Readonly<{
 	children: ReactNode;
-}>) => {
+	modal: ReactNode;
+}>;
+
+const RootLayout = async ({ children, modal }: Props) => {
 	const userEntity = await getCurrentUserAction();
 
 	return (
@@ -51,7 +52,11 @@ const RootLayout = async ({
 								<SignedOutButton />
 							</div>
 						</header>
-						<main>{children}</main>
+						<main>
+							{children}
+							{modal}
+							<div id="modal-root" />
+						</main>
 					</body>
 				</html>
 			</ClerkProvider>

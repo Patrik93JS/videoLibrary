@@ -1,10 +1,11 @@
 import { CreateFormCategory } from '../../../components/client/category/CreateFormCategory';
+import { Modal } from '../Modal';
 
-const CreateCategoryModal = () => {
+export const CreateCategoryModal = () => {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-800">
+		<Modal>
 			<CreateFormCategory />
-		</main>
+		</Modal>
 	);
 };
 

@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { CreateFormCategory } from 'src/components/client/category/CreateFormCategory';
 
-export const CreateCategoryPage: FC = () => {
-	return null;
+const CreateCategory = () => {
+	return <CreateFormCategory />;
 };
 
-export default CreateCategoryPage;
+export default CreateCategory;
