@@ -1,7 +1,6 @@
 import { getRoleAction } from '../../actions/getRoleAction';
 import { getUserAction } from '../../actions/getUsersAction';
 import { UsersList } from '../../components/client/roleManagement/UsersList';
-import { PageSeo } from '../../components/client/SEO/PageSeo';
 
 const AdminSystem = async () => {
 	const users = await getUserAction();
@@ -9,7 +8,7 @@ const AdminSystem = async () => {
 
 	return (
 		<>
-			<PageSeo title="Admin Panel" description="Zde admin může nastavit roli uživatele" index />
+			{/* <PageSeo title="Admin Panel" description="Zde admin může nastavit roli uživatele" index /> */}
 
 			<main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-800">
 				<UsersList users={users} roles={roles} />;

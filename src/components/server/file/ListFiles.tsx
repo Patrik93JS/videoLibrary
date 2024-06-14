@@ -27,7 +27,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 
 				return (
 					<div key={video.id} className="bg-gray-400 shadow-md  rounded-lg overflow-hidden">
-						<Link href={`/${video.id}`} variant="image">
+						<Link href={`/video/${video.id}`} variant="image">
 							<div className="relative w-full " style={{ height: '200px' }}>
 								<AsyncImage file={file} />
 							</div>
