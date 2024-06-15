@@ -1,8 +1,8 @@
 'use client';
 
 import { FC } from 'react';
-import { useModalContext } from 'src/app/@modal/Modal';
 import { createCategoryAction } from '../../../actions/createCategoryAction';
+import { useModalContext } from '../../../app/@modal/Modal';
 import { createCategorySchema } from '../../../util/schemas/createCategorySchema';
 import { FormContext } from '../../ui/form/FormContext';
 import { Input } from '../../ui/form/Input';
