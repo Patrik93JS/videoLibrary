@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { Robots } from 'next/dist/lib/metadata/types/metadata-types';
 import { SITE_NAME } from './constants';
 import { getBaseUrl } from './helpers/getBaseUrl';
 
@@ -9,16 +10,16 @@ type Props = {
 	keywords?: string[];
 	pathname?: string;
 	searchParams?: string;
-	isAdmin: boolean;
+	noIndex?: boolean;
 };
 
-export const pageSeo = ({ title, description, image, keywords, pathname, searchParams, isAdmin }: Props): Metadata => {
+export const pageSeo = ({ title, description, image, keywords, pathname, searchParams, noIndex }: Props): Metadata => {
 	const baseUrl = getBaseUrl();
 	const url = `${baseUrl}${pathname}${searchParams ? '?' + searchParams.toString() : ''}`;
 	const fullTitle = title ? (~title.indexOf(SITE_NAME) ? title : `${title} | ${SITE_NAME}`) : SITE_NAME;
 	const fullImage = image ? `${baseUrl}/${image.startsWith('/') ? image.substring(1) : image}` : undefined;
 	const descriptionToShow = description ?? 'Default fallback description';
-	const robots = isAdmin
+	const robots: Robots = noIndex
 		? {
 				index: false,
 				follow: false,

@@ -1,5 +1,4 @@
 'use server';
-import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { fetchVideoData } from '../../../util/helpers/fetchVideoData';
 import { pageSeo } from '../../../util/pageSeo';
 
@@ -19,17 +18,14 @@ const Video = async ({ params }: { params: { videoId: string } }) => {
 
 export const generateMetadata = async ({ params }: { params: { videoId: string } }) => {
 	const videoData = await fetchVideoData({ params });
-	const user = await getCurrentUserAction();
 	if (!videoData) return;
 
 	const { videoName, videoDescription, videoUrl } = videoData;
-	const isAdmin = user?.role.name === 'admin';
 
 	return pageSeo({
 		title: videoName,
 		description: videoDescription,
 		image: videoUrl,
-		isAdmin: isAdmin,
 	});
 };
 
