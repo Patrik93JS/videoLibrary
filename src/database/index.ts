@@ -15,11 +15,12 @@ export const database = new DataSource({
 	username: 'postgres',
 	password: 'postgresSecret',
 	database: 'video-database',
-	synchronize: true,
+	migrationsRun: true,
 	logging: true,
 	entities: [Category, File, User, Role, Video],
-	migrations: [],
+	migrations: ['src/database/migrations/*.ts'],
 	subscribers: [],
+	migrationsTransactionMode: 'all',
 });
 
 export const withDatabase = async () => {
@@ -29,3 +30,5 @@ export const withDatabase = async () => {
 	}
 	return database;
 };
+
+withDatabase();

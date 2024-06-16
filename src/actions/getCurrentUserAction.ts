@@ -2,8 +2,8 @@
 
 import { currentUser } from '@clerk/nextjs/server';
 import { revalidateTag } from 'next/cache';
-import { withDatabase } from '../database';
 import { RoleController, UserController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 
 export const getCurrentUserAction = async () => {
 	const clerkUser = await currentUser();

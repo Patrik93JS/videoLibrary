@@ -1,6 +1,6 @@
 'use server';
-import { withDatabase } from '../../../database';
 import { CategoryController } from '../../../database/controllers';
+import { withDatabase } from '../../../database/index';
 
 export const ListCategory = async () => {
 	const db = await withDatabase();

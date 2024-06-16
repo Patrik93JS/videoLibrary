@@ -1,8 +1,8 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { withDatabase } from '../database';
 import { CategoryController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 import { createCategorySchema } from '../util/schemas/createCategorySchema';
 
 export const createCategoryAction = async (state: unknown, data: FormData) => {

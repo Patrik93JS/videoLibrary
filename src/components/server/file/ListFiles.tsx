@@ -2,8 +2,8 @@
 import { type FC } from 'react';
 import type { Filter } from 'src/components/client/file/types';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
-import { withDatabase } from '../../../database';
 import { VideoController } from '../../../database/controllers';
+import { withDatabase } from '../../../database/index';
 import { DeleteButton } from '../../client/file/DeleteButton';
 import { Link } from '../../ui/reusable/Link';
 import { AsyncImage } from './AsyncImage';

@@ -2,6 +2,7 @@
 	"name": "video-library",
 	"version": "0.1.0",
 	"private": true,
+	"type": "commonjs",
 	"scripts": {
 		"build": "next build",
 		"predev": "docker-compose up -d",
@@ -11,7 +12,8 @@
 		"start": "next start",
 		"prepare": "husky",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
-		"check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\""
+		"check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+		"migrate": "typeorm-ts-node-esm -d ./src/database/index.ts migration:generate ./src/database/migrations/migration"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "3.565.0",
