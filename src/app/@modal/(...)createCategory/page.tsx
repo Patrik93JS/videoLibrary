@@ -1,12 +1,8 @@
+'use server';
 import { CreateFormCategory } from '../../../components/client/category/CreateFormCategory';
-import { Modal } from '../Modal';
 
-const CreateCategoryModal = () => {
-	return (
-		<Modal>
-			<CreateFormCategory />
-		</Modal>
-	);
+const CreateCategoryModal = async () => {
+	return <CreateFormCategory />;
 };
 
 export default CreateCategoryModal;

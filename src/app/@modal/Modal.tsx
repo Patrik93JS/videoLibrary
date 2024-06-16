@@ -1,8 +1,7 @@
-/* eslint-disable simple-import-sort/imports */
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { createContext, type ElementRef, type FC, type PropsWithChildren, useEffect, useRef, useContext } from 'react';
+import { createContext, type ElementRef, type FC, type PropsWithChildren, useContext, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { CgClose } from 'react-icons/cg';
 

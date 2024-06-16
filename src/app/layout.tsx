@@ -3,7 +3,6 @@ import '../database';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Head from 'next/head';
 import { ReactNode } from 'react';
 import { getCurrentUserAction } from '../actions/getCurrentUserAction';
 import { SignedInButton } from '../components/client/auth/SignedInButton';
@@ -28,14 +27,6 @@ const RootLayout = async ({ children, modal }: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>Video Library</title>
-				<meta
-					name="description"
-					content="Explore our vast collection of videos across multiple genres. From educational content to entertainment, discover videos that cater to your interests and stay updated with the latest trends."
-				/>
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-			</Head>
 			<ClerkProvider>
 				<html lang="en">
 					<body className={inter.className}>
