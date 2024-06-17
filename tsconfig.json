@@ -29,7 +29,16 @@
 			}
 		]
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/database/index.ts", "next.config.mjs"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"src/database/index.ts",
+		"next.config.mjs",
+		"next-sitemap.config.js",
+		"next-sitemap.config.js"
+	],
 	"exclude": ["node_modules"],
 	"ts-node": {
 		"require": ["tsconfig-paths/register"]
