@@ -1,7 +1,7 @@
 'use server';
 
-import { withDatabase } from '../database';
 import { UserController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 import { usersListLength } from '../util/constants';
 
 export const getUserAction = async () => {

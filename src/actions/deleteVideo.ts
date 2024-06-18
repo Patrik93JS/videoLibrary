@@ -1,8 +1,8 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { withDatabase } from '../database';
 import { VideoController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 import { deleteVideoSchema } from '../util/schemas/deleteVideoSchema';
 
 export const deleteVideo = async (data: FormData) => {

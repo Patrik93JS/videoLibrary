@@ -1,8 +1,8 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { withDatabase } from '../database';
 import { UserController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 import { userRolesSchema } from '../util/schemas/userRolesSchema';
 
 export const updateUserAction = async (state: unknown, data: FormData) => {

@@ -49,7 +49,6 @@ export const FormContext = <T extends z.ZodObject<z.ZodRawShape>>({
 						mutate(new FormData(formRef.current!));
 					})(e);
 				}}
-				className="fixed top-0 left-0 w-full h-screen flex justify-center items-center bg-black bg-opacity-50 z-50"
 				{...formProps}
 			>
 				<div className="max-w-md w-full bg-white p-8 rounded-xl relative">{children}</div>

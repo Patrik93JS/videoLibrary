@@ -15,7 +15,7 @@ export class Video extends CommonEntity {
 	@ManyToOne(() => User, (user) => user.id)
 	user: User;
 
-	@ManyToOne(() => Category, (category) => category.id)
+	@ManyToOne(() => Category, (category) => category.video)
 	category: Relation<Category>;
 
 	@OneToMany(() => File, (file) => file.video)

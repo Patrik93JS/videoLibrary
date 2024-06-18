@@ -1,7 +1,7 @@
 'use server';
 
-import { withDatabase } from '../database';
 import { RoleController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 
 export const getRoleAction = async () => {
 	const db = await withDatabase();

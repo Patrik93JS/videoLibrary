@@ -13,6 +13,6 @@ export class File extends CommonEntity {
 	@Column({ type: 'varchar' })
 	minetype: string;
 
-	@ManyToOne(() => Video, (video) => video.id, { eager: true, cascade: true })
+	@ManyToOne(() => Video, (video) => video.files, { eager: true, cascade: true })
 	video: Relation<Video>;
 }

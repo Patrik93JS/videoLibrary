@@ -1,8 +1,8 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { withDatabase } from '../database';
 import { FileController, VideoController } from '../database/controllers';
+import { withDatabase } from '../database/index';
 import { uploadFileSchema } from '../util/schemas/uploadFileSchema';
 import { getCurrentUserAction } from './getCurrentUserAction';
 

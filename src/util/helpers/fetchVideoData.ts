@@ -1,6 +1,6 @@
-import { withDatabase } from '../../database';
 import { VideoController } from '../../database/controllers';
 import { S3Manager } from '../../database/controllers/S3Manager';
+import { withDatabase } from '../../database/index';
 
 export const fetchVideoData = async ({ params }: { params: { videoId: string } }) => {
 	const videoId = params.videoId;

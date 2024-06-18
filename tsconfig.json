@@ -7,8 +7,9 @@
 		"noEmit": true,
 		"strictPropertyInitialization": false,
 		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "bundler",
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"target": "ESNext",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
@@ -27,6 +28,18 @@
 			}
 		]
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-	"exclude": ["node_modules"]
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"src/database/index.ts",
+		"src/app/server-sitemap.xml/route.ts",
+		"next.config.mjs",
+		"next-sitemap.config.js"
+	],
+	"exclude": ["node_modules"],
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
+	}
 }

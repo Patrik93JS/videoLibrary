@@ -2,9 +2,10 @@
 import { type FC } from 'react';
 import type { Filter } from 'src/components/client/file/types';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
-import { withDatabase } from '../../../database';
 import { VideoController } from '../../../database/controllers';
-import { DeleteVideoButton } from '../../client/file/DeleteVideoButton';
+
+  import { withDatabase } from '../../../database/index';
+import { DeleteButton } from '../../client/file/DeleteButton';
 import { Link } from '../../ui/reusable/Link';
 import { AsyncImage } from './AsyncImage';
 
@@ -27,7 +28,7 @@ export const ListFiles: FC<Props> = async ({ filter }) => {
 
 				return (
 					<div key={video.id} className="bg-gray-400 shadow-md  rounded-lg overflow-hidden">
-						<Link href={`/${video.id}`} variant="image">
+						<Link href={`/video/${video.id}`} variant="image">
 							<div className="relative w-full " style={{ height: '200px' }}>
 								<AsyncImage file={file} />
 							</div>

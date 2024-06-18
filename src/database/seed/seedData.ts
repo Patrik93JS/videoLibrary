@@ -1,6 +1,6 @@
 import { roles } from '../../util/constants';
-import { withDatabase } from '..';
 import { RoleController } from '../controllers';
+import { withDatabase } from '../index';
 
 export const seedData = async () => {
 	const db = await withDatabase();
