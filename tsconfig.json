@@ -8,7 +8,6 @@
 		"strictPropertyInitialization": false,
 		"esModuleInterop": true,
 		"module": "CommonJS",
-		// "moduleResolution": "NodeNext",
 		"moduleResolution": "node",
 		"target": "ESNext",
 		"resolveJsonModule": true,
