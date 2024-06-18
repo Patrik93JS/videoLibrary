@@ -11,7 +11,5 @@ export const AsyncImage: FC<AsyncImageProsp> = async ({ file }) => {
 	const fileUrl = await new S3Manager().getFilePresignedUrl(file.id);
 	if (!fileUrl) return;
 
-
 	return <Image src={fileUrl} alt={file.name} width={100} height={100} className="object-cover w-full h-full" />;
-    
 };

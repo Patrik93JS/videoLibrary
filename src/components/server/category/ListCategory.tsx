@@ -4,6 +4,7 @@ import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { withDatabase } from '../../../database';
 import { CategoryController } from '../../../database/controllers';
 import { DeleteCategoryButton } from '../../client/category/DeleteCategoryButton';
+
 export const ListCategory = async () => {
 	const db = await withDatabase();
 	const categoryController = new CategoryController(db);
