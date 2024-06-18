@@ -3,9 +3,8 @@ import { type FC } from 'react';
 import type { Filter } from 'src/components/client/file/types';
 import { getCurrentUserAction } from '../../../actions/getCurrentUserAction';
 import { VideoController } from '../../../database/controllers';
-
-  import { withDatabase } from '../../../database/index';
-import { DeleteButton } from '../../client/file/DeleteButton';
+import { withDatabase } from '../../../database/index';
+import { DeleteVideoButton } from '../../client/file/DeleteVideoButton';
 import { Link } from '../../ui/reusable/Link';
 import { AsyncImage } from './AsyncImage';
 
