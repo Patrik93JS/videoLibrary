@@ -21,7 +21,7 @@ export const ToggleFilter: FC<Props> = ({ filter }) => {
 
 	return (
 		<Button onClick={toggleFilter} disabled={isLoading} variant="filter">
-			{filter === 'on' ? 'Show My Videos' : 'Show All Videos'}
+			{filter === 'on' ? 'Show All Videos' : 'Show My Videos'}
 		</Button>
 	);
 };
