@@ -1,41 +1,42 @@
 'use client';
 
-import { FC, ReactNode, useState } from 'react';
-import { IoArrowBackCircleOutline, IoArrowForwardCircleOutline } from 'react-icons/io5';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { FC } from 'react';
+import { PaginationContent } from './PaginationContent';
+import { PaginationCurrent } from './PaginationCurrent';
+import { PaginationNext } from './PaginationNext';
+import { PaginationPrevious } from './PaginationPrevious';
 
 type Props = {
-	data?: ReactNode[];
+	currentPage: number;
+	dataLength: number;
 	limit: number;
-	children?: ReactNode;
 };
 
-const currentPage = [-1, 0, +1];
+const pages = [-1, 0, +1];
 
-export const Pagination: FC<Props> = ({ data, limit, children }) => {
-	const [page, setPage] = useState(1);
+export const Pagination: FC<Props> = ({ currentPage, dataLength, limit }) => {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+
+	const setPage = (page: number) => {
+		const newParams = new URLSearchParams(searchParams.toString());
+		newParams.set('page', page.toString());
+		router.push(`?${newParams.toString()}`);
+	};
+
+	const pageLimit = Math.ceil(dataLength / limit);
 
 	return (
-		<div className="flex justify-center items-center">
-			{/* <div>{data?.length === limit && JSON.stringify(data)}</div>
-			<div>{children === limit && children}</div> */}
-			{children === limit && children}
-			<button onClick={() => setPage(page - 1)} disabled={page === 1}>
-				<IoArrowBackCircleOutline className="text-white hover:bg-black rounded-full hover: w-18 hover:h-18" size={50} />
-			</button>
-
-			{currentPage.map((state) => {
-				return (
-					<div
-						key={state}
-						className="text-white h-10 w-10 rounded-full bg-black flex justify-center items-center m-5 hover:bg-white hover:text-black cursor-pointer"
-					>
-						{page + state}
-					</div>
-				);
-			})}
-			<button onClick={() => setPage(page + 1)} disabled={page === 10}>
-				<IoArrowForwardCircleOutline className="text-white hover:bg-black rounded-full hover: w-18 hover:h-18" size={50} />
-			</button>
-		</div>
+		<PaginationContent>
+			<PaginationPrevious currentPage={currentPage} onPageChange={() => setPage(currentPage - 1)} />
+			<PaginationCurrent currentPage={currentPage} pages={pages} />
+			<PaginationNext
+				pageLimit={pageLimit}
+				currentPage={currentPage}
+				onPageChange={() => setPage(currentPage + 1)}
+				dataLength={dataLength}
+			/>
+		</PaginationContent>
 	);
 };
