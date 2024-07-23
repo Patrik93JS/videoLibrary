@@ -19,7 +19,7 @@ export const ListFiles: FC<Props> = async ({ filter, currentPage }) => {
 
 	const limit = 6;
 
-	const videos = await videoController.listAllByUser(undefined, currentPage, 6);
+	const videos = await videoController.listAllByUser(undefined, currentPage, limit);
 
 	const filteredVideos = filter === 'on' ? videos.filter((video) => video.user?.id === userId) : videos;
 
@@ -28,13 +28,12 @@ export const ListFiles: FC<Props> = async ({ filter, currentPage }) => {
 			<div className="grid grid-cols-6 gap-4 my-10 mx-5">
 				{filteredVideos.map((video) => {
 					const file = video.files.find((file) => file.minetype.match(/image\/(jpeg|png|gif|webp|svg\+xml)/));
-					if (!file) return;
 
 					return (
 						<div key={video.id} className="bg-gray-400 shadow-md  rounded-lg overflow-hidden">
 							<Link href={`/video/${video.id}`} variant="image">
 								<div className="relative w-full " style={{ height: '200px' }}>
-									<AsyncImage file={file} />
+									{file ? <AsyncImage file={file} /> : null}
 								</div>
 							</Link>
 							<div className="p-4 flex justify-between items-center">
@@ -46,7 +45,7 @@ export const ListFiles: FC<Props> = async ({ filter, currentPage }) => {
 					);
 				})}
 			</div>
-			<Pagination currentPage={currentPage} dataLength={videos.length} limit={limit} />
+			<Pagination currentPage={currentPage} dataLength={videos.length} />
 		</>
 	);
 };

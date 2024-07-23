@@ -1,18 +1,13 @@
 import { FC } from 'react';
 import { IoArrowForwardCircleOutline } from 'react-icons/io5';
+import { usePaginationContext } from './PaginationContent';
 
-type Props = {
-	pageLimit: number;
-	currentPage: number;
-	onPageChange: () => void;
-	dataLength: number;
-};
-
-export const PaginationNext: FC<Props> = ({ pageLimit, currentPage, onPageChange }) => {
-	const isDisabled = currentPage >= pageLimit + 1;
+export const PaginationNext: FC = () => {
+	const { currentPage, setCurrentPage, numOfPages } = usePaginationContext();
+	const isDisabled = currentPage >= numOfPages;
 
 	return (
-		<button onClick={onPageChange} disabled={isDisabled}>
+		<button onClick={() => setCurrentPage((curr) => curr + 1)} disabled={isDisabled}>
 			<IoArrowForwardCircleOutline className="text-white hover:bg-black rounded-full hover:w-18 hover:h-18" size={50} />
 		</button>
 	);
