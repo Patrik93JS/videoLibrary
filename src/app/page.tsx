@@ -1,5 +1,5 @@
 'use server';
-import { type FC } from 'react';
+import { FC } from 'react';
 import { FilterFiles } from '../components/client/file/FilterFiles';
 import { isFilterOn } from '../components/client/file/types';
 import { ListCategory } from '../components/server/category/ListCategory';
@@ -9,6 +9,8 @@ const Home: FC<{
 	searchParams?: { [key: string]: string | string[] | undefined };
 }> = async ({ searchParams }) => {
 	const filterParam = searchParams?.['filter'];
+	const currentPageParam = searchParams?.['page'];
+	const currentPage = currentPageParam ? Number(currentPageParam) : 1;
 	const filter = isFilterOn(filterParam) ? filterParam : 'on';
 
 	return (
@@ -18,7 +20,7 @@ const Home: FC<{
 				<ListCategory />
 			</div>
 
-			<FilterFiles filter={filter} />
+			<FilterFiles filter={filter} currentPage={currentPage} />
 		</main>
 	);
 };
